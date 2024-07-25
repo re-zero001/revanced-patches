@@ -1470,4 +1470,20 @@ Note:
     <string name="revanced_whitelist_settings_summary">检查或删除添加到白名单的频道列表</string>
     <string name="revanced_whitelist_settings_title">频道白名单</string>
     <string name="revanced_whitelist_sponsor_block">SponsorBlock</string>
+    <string name="revanced_bypass_image_region_restrictions_summary_off">使用原始图片主机\n\n启用此功能以修复在某些地区被屏蔽的缺失图片</string>
+    <string name="revanced_bypass_image_region_restrictions_summary_on">使用图片主机 yt4.ggpht.com</string>
+    <string name="revanced_bypass_image_region_restrictions_title">绕过图片地区限制</string>
+    <string name="revanced_enable_save_and_restore_brightness_summary_off">退出或进入全屏时不保存和恢复亮度</string>
+    <string name="revanced_enable_save_and_restore_brightness_summary_on">退出或进入全屏时保存和恢复亮度</string>
+    <string name="revanced_enable_save_and_restore_brightness_title">启用保存和恢复亮度</string>
+    <string name="revanced_icon_mmt_blue">MMT Blue</string>
+    <string name="revanced_icon_mmt_green">MMT Green</string>
+    <string name="revanced_icon_mmt_yellow">MMT Yellow</string>
+    <string name="revanced_preference_category_image_region_restrictions">图片地区限制</string>
+    <string name="revanced_sb_new_segment_adjust">调整：标记片段的开始和结束时间</string>
+    <string name="revanced_sb_new_segment_compare">验证片段</string>
+    <string name="revanced_sb_new_segment_edit">编辑片段</string>
+    <string name="revanced_sb_new_segment_forward">向前跳转指定时间 (默认:150毫秒)</string>
+    <string name="revanced_sb_new_segment_publish">发布创建的片段</string>
+    <string name="revanced_sb_new_segment_rewind">向后回退指定时间 (默认: 150ms)</string>
 </resources>
