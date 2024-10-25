@@ -1701,4 +1701,9 @@ AVC (H.264) 的最大解析度为 1080p，且视频播放将使用比 VP9 或 AV
     <string name="revanced_whitelist_settings_summary">检查或删除添加到白名单的频道列表</string>
     <string name="revanced_whitelist_settings_title">频道白名单</string>
     <string name="revanced_whitelist_sponsor_block">SponsorBlock</string>
+    <string name="revanced_external_downloader_package_name_video_long_press_summary">已安装的外部下载器应用程序的包名，如 NewPipe 或 YTDLnis，可以通过长按显示</string>
+    <string name="revanced_external_downloader_package_name_video_long_press_title">长按以显示视频下载器应用的包名</string>
+    <string name="revanced_icon_mmt_orange">MMT Orange</string>
+    <string name="revanced_icon_mmt_pink">MMT Pink</string>
+    <string name="revanced_icon_mmt_turquoise">MMT Turquoise</string>
 </resources>
