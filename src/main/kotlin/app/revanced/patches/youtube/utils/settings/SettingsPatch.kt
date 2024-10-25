@@ -6,7 +6,6 @@ import app.revanced.patches.shared.elements.StringsElementsUtils.removeStringsEl
 import app.revanced.patches.shared.mapping.ResourceMappingPatch
 import app.revanced.patches.youtube.utils.compatibility.Constants.COMPATIBLE_PACKAGE
 import app.revanced.patches.youtube.utils.fix.cairo.CairoSettingsPatch
-import app.revanced.patches.youtube.utils.fix.litho.ConversionContextObfuscationPatch
 import app.revanced.patches.youtube.utils.integrations.IntegrationsPatch
 import app.revanced.patches.youtube.utils.resourceid.SharedResourceIdPatch
 import app.revanced.patches.youtube.utils.settings.ResourceUtils.addPreference
@@ -32,8 +31,6 @@ object SettingsPatch : BaseResourcePatch(
         SharedResourceIdPatch::class,
         SettingsBytecodePatch::class,
         CairoSettingsPatch::class,
-        // Add dependency to the settings patch as a limitation of patch implementation.
-        ConversionContextObfuscationPatch::class,
     ),
     compatiblePackages = COMPATIBLE_PACKAGE,
     requiresIntegrations = true
@@ -92,9 +89,10 @@ object SettingsPatch : BaseResourcePatch(
     internal var upward1842 = false
     internal var upward1849 = false
     internal var upward1902 = false
-    internal var upward1912 = false
+    internal var upward1915 = false
     internal var upward1923 = false
     internal var upward1925 = false
+    internal var upward1928 = false
 
     override fun execute(context: ResourceContext) {
 
@@ -294,9 +292,10 @@ object SettingsPatch : BaseResourcePatch(
                         upward1842 = 234302000 <= playServicesVersion
                         upward1849 = 235000000 <= playServicesVersion
                         upward1902 = 240204000 < playServicesVersion
-                        upward1912 = 241302000 <= playServicesVersion
+                        upward1915 = 241602000 <= playServicesVersion
                         upward1923 = 242402000 <= playServicesVersion
                         upward1925 = 242599000 <= playServicesVersion
+                        upward1928 = 242905000 <= playServicesVersion
 
                         break
                     }
@@ -321,7 +320,13 @@ object SettingsPatch : BaseResourcePatch(
         updatePatchStatus(patch.name!!)
     }
 
+    private val patchList = ArrayList<String>()
+
     internal fun updatePatchStatus(patchName: String) {
+        patchList.add(patchName)
         contexts.updatePatchStatus(patchName)
     }
+
+    internal fun containsPatch(patchName: String) =
+        patchList.contains(patchName)
 }

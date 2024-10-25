@@ -1,3 +1,468 @@
+# [2.230.0-dev.6](https://github.com/anddea/revanced-patches/compare/v2.230.0-dev.5...v2.230.0-dev.6) (2024-10-24)
+
+
+### Bug Fixes
+
+* **YouTube - Hook YouTube Music actions:** App crashes when first installed ([aee5a18](https://github.com/anddea/revanced-patches/commit/aee5a18b837c2f0d139a4a6f312d9df7f1b6de04))
+* **YouTube - SponsorBlock:** The new segment window never showed up with Bold icons selected due to the missing drag handle ([c736841](https://github.com/anddea/revanced-patches/commit/c736841774e3b527871d6afe4b6d311a2bc2e573))
+* **YouTube - Spoof streaming data:** Wrong register used ([ef1908f](https://github.com/anddea/revanced-patches/commit/ef1908ffd3554d787eb4dcc50995e2888a5f3fad))
+* **YouTube & YouTube Music - GmsCore support:** Unimplemented service in GmsCore causes memory leak ([cca866b](https://github.com/anddea/revanced-patches/commit/cca866b218749dd55c52b0616c1d015135a44511))
+* **YouTube Music - Custom branding icon:** Patch fails on certain versions ([1b8654a](https://github.com/anddea/revanced-patches/commit/1b8654a9779e0c1029da4b25430d6f0ef946f5e4))
+
+
+### Features
+
+* **YouTube - Hide comments components:** Add `Hide highlighted search links` setting ([39ae3b0](https://github.com/anddea/revanced-patches/commit/39ae3b0072b1e2a8716777d146ba0b45ec555c3e))
+* **YouTube - Hide feed components:** Remove `Hide UPCOMING video` setting ([55a6953](https://github.com/anddea/revanced-patches/commit/55a695395bff0903d34ca45593d3ff97609fe264))
+* **YouTube - Player components:** Add `Sanitize video subtitle` setting ([fc4e293](https://github.com/anddea/revanced-patches/commit/fc4e293afdfef4139ca8a1667c274efd7164ced1))
+* **YouTube - Shorts components:** Add `Hide in channel` setting (Hide the Shorts shelf on the channel home tab) ([428616e](https://github.com/anddea/revanced-patches/commit/428616e2f1426e8128afab8f2b684e35cea3f1cb))
+* **YouTube - Spoof app version:** Show the dialog when the app is first installed ([9fe964a](https://github.com/anddea/revanced-patches/commit/9fe964a5484b5e9b69b82a9d1128d6f43ed0052f))
+* **YouTube - Swipe controls:** Add `Swipe sensitivity` settings ([ef594d0](https://github.com/anddea/revanced-patches/commit/ef594d09621e26a0b4824b7236d8915e0fedf5cf))
+* **YouTube & YouTube Music - GmsCore support:** Add patch option `Disable GmsService Broker` ([b24a63c](https://github.com/anddea/revanced-patches/commit/b24a63c54d946150db3b8181102034d48ed36187))
+* **YouTube & YouTube Music - Return YouTube Username:** Add `Display format` setting ([aa617ea](https://github.com/anddea/revanced-patches/commit/aa617eaf1beddbabc9239e067027fa76e58378b3))
+* **YouTube Music - Navigation bar components:** Do not use hardcoded color, `Enable black navigation bar` setting is turned off ([2ba1bd5](https://github.com/anddea/revanced-patches/commit/2ba1bd5ee917f8145e207b9194daaa8acfaa839c))
+* **YouTube Music - Spoof app version:** App crashes when first installed ([1f36b4e](https://github.com/anddea/revanced-patches/commit/1f36b4e843510e74e52c404beeae193cd314db50))
+
+
+### Performance Improvements
+
+* **YouTube - GmsCore support:** Improve performance by using hashsets ([1094160](https://github.com/anddea/revanced-patches/commit/10941604fe812b9fa9c965a183426745ed8519f1))
+
+# [2.230.0-dev.5](https://github.com/anddea/revanced-patches/compare/v2.230.0-dev.4...v2.230.0-dev.5) (2024-10-16)
+
+
+### Bug Fixes
+
+* **YouTube - Custom Shorts action buttons:** Low icon quality for `Cairo` option on YouTube 18.29.38 ([819189e](https://github.com/anddea/revanced-patches/commit/819189ed9e66e039c540a78c81c84f9b6bf96682))
+* **YouTube Music - Player components:** `Hide Audio / Video toggle` setting not working in landscape mode ([e171e45](https://github.com/anddea/revanced-patches/commit/e171e452b1bc936079373afcaedeeb7f30394dec))
+* **YouTube Music - Player components:** Patches do not apply properly in certain versions ([db80b1d](https://github.com/anddea/revanced-patches/commit/db80b1d0dd30d0f19323541c9018ff5ab62dae2c))
+* **YouTube Music - Spoof app version:** ListPreference sometimes selects wrong values ([ca3dba2](https://github.com/anddea/revanced-patches/commit/ca3dba27402448c8a89c3fc3fabb080f8315c303))
+
+
+### Features
+
+* **YouTube - Hide player flyout menu:** Add `Hide 1080p Premium menu` setting ([3231f36](https://github.com/anddea/revanced-patches/commit/3231f3614da9a49ae3bdead139849992d6e85c95))
+* **YouTube - Seekbar components:** Add `Disable seekbar chapters` setting ([a297e58](https://github.com/anddea/revanced-patches/commit/a297e58896c6d1bd968d5a33e993c3395321a908))
+* **YouTube - Spoof app version:** Add target version `19.13.37 - Restores old style Rolling number animations` ([9d568e0](https://github.com/anddea/revanced-patches/commit/9d568e040bfe7c052e315179793c2f413bed08a7))
+* **YouTube - Toolbar components:** Add `Hide YouTube Doodles` setting ([00c6730](https://github.com/anddea/revanced-patches/commit/00c6730ed977274a70bf8cdd75b3d12af6b9f485))
+* **YouTube & YouTube Music - Hide settings menu:** Add switch preferences for each setting entry ([3c9e660](https://github.com/anddea/revanced-patches/commit/3c9e66083aebe89560ded83b36191cf0d73ffc09))
+* **YouTube & YouTube Music - Return YouTube Dislike:** Add `Show estimated likes` setting ([00793d8](https://github.com/anddea/revanced-patches/commit/00793d87e1082d0adbf40f38d5cbd7057c68d6c7))
+* **YouTube & YouTube Music:** Add `Return YouTube Username` patch ([3dbe9c4](https://github.com/anddea/revanced-patches/commit/3dbe9c49c984371bf89e8fc13a5acafa0ef83ce2))
+
+# [2.230.0-dev.4](https://github.com/anddea/revanced-patches/compare/v2.230.0-dev.3...v2.230.0-dev.4) (2024-10-04)
+
+
+### Bug Fixes
+
+* **YouTube - Hide feed components:** `Hide Latest videos button` setting does not support tablets ([85397f8](https://github.com/anddea/revanced-patches/commit/85397f85d14e86c598f5df95d79cf8de22dfa891))
+* **YouTube - Shorts components:** `Hide paused header` setting does not work ([6df82cf](https://github.com/anddea/revanced-patches/commit/6df82cfd72951867babd4e985f51098ff773f310))
+
+
+### Features
+
+* **YouTube - Visual preferences icons:** Add `RVX Letters` and `RVX Letters Bold` icons for RVX setting ([de30230](https://github.com/anddea/revanced-patches/commit/de30230265b90de1c6ff93c3ec80155381c26ad0))
+* **YouTube Music - Spoof app version:** Add target version `7.16.53` ([f8bf95c](https://github.com/anddea/revanced-patches/commit/f8bf95cc61d79da1241ef76443d5580f347a60f4))
+
+# [2.230.0-dev.3](https://github.com/anddea/revanced-patches/compare/v2.230.0-dev.2...v2.230.0-dev.3) (2024-10-02)
+
+
+### Features
+
+* **YouTube - Visual preferences icons:** Add `YT Alt` icon for RVX setting ([8bd264e](https://github.com/anddea/revanced-patches/commit/8bd264e783a982fcc6e6270e579b98f033e58c77))
+
+# [2.230.0-dev.2](https://github.com/anddea/revanced-patches/compare/v2.230.0-dev.1...v2.230.0-dev.2) (2024-10-01)
+
+
+### Bug Fixes
+
+* **YouTube - Custom branding icon:** Patch failed due to animation files when AFN is selected ([231a468](https://github.com/anddea/revanced-patches/commit/231a4686be7fe5b87690d9cf8c88fae5245971ef))
+
+# [2.230.0-dev.1](https://github.com/anddea/revanced-patches/compare/v2.229.0...v2.230.0-dev.1) (2024-09-30)
+
+
+### Bug Fixes
+
+* **YouTube - Hide feed components:** `Hide carousel shelf` setting sometimes hides the library shelf ([8c3a5d2](https://github.com/anddea/revanced-patches/commit/8c3a5d2fd08cdca5cf66324cc2a44b722e7062cc))
+* **YouTube - Player components:** The `Disable player popup panels` setting disables the engagement panel in Mix playlists on certain YouTube versions ([63c463c](https://github.com/anddea/revanced-patches/commit/63c463ca2bebd43c85e79609275f72bf4176f242))
+* **YouTube - Settings:** `Search bar in settings` can't find `RYD` and `SponsorBlock` settings ([ab222a6](https://github.com/anddea/revanced-patches/commit/ab222a672317ec7d00d566b1ca655b7b5c9a78cd))
+* **YouTube Music - Disable Cairo splash animation:** Some versions are recognized as unpatchable even though they can be patched ([1e74ff9](https://github.com/anddea/revanced-patches/commit/1e74ff94811097370e4c0f0d05dc429601e8f05c))
+* **YouTube Music - Player components:** `Remember shuffle state` setting does not remember the correct state ([18482b2](https://github.com/anddea/revanced-patches/commit/18482b2e6b57d2eea95527a05e9d86674446c052))
+* **YouTube Music - SponsorBlock:**   SponsorBlock does not skip segments at the beginning of a video when in the background ([e895e6f](https://github.com/anddea/revanced-patches/commit/e895e6f5c638df5e2233cc50dc82de9ccfe89df0))
+
+
+### Features
+
+* **Custom branding icon:** Add `MMT Orange`, `MMT Pink`, `MMT Turquoise` ([e203ad1](https://github.com/anddea/revanced-patches/commit/e203ad159e8717a2042a978e1c6cee04fa8ce745))
+* **YouTube - Change start page:** Add `Change start page type` setting ([251d5d7](https://github.com/anddea/revanced-patches/commit/251d5d726061aff08ebe190513e10862db7c4856))
+* **YouTube - Custom Shorts action buttons:**  Add `Cairo` ([f3b6717](https://github.com/anddea/revanced-patches/commit/f3b67174da909ab07d4b04bef14d5d7ae672cc3b))
+* **YouTube - Hide feed components:** Add `Hide related videos` setting ([a82c9ba](https://github.com/anddea/revanced-patches/commit/a82c9bac56e875417e8d0632d5e4cb14a3e4c4aa))
+* **YouTube - Hide feed components:** Add `Hide UPCOMING video` setting ([ec9d641](https://github.com/anddea/revanced-patches/commit/ec9d6419df2ed3bd13c4171a92216314202802a1))
+* **YouTube - Navigation bar components:** Add `Hide navigation bar` setting ([5936015](https://github.com/anddea/revanced-patches/commit/593601526bd10a6976d108d1d8689c44cf6331e9))
+* **YouTube - Shorts Component:** Add `Disable Like button animation` setting ([f9709d3](https://github.com/anddea/revanced-patches/commit/f9709d3b5661abfe73b0ebc1273e8b521aa695be))
+* **YouTube - Shorts components:** Add `Height percentage of empty space` setting ([b214aa5](https://github.com/anddea/revanced-patches/commit/b214aa5a8eed5a5929806f1ddbbd71bfc30effe6))
+* **YouTube - Shorts components:** Add `Hide stickers` setting ([49cf0fd](https://github.com/anddea/revanced-patches/commit/49cf0fd5c1bf1289944b0e5e78444ae9c23ced60))
+* **YouTube Music - Settings:** Add `Open default app settings` setting ([71b11cf](https://github.com/anddea/revanced-patches/commit/71b11cf0c43439b130cb22331252c5940d9229cb))
+* **YouTube:** Add `Hide shortcuts` patch ([2435c4f](https://github.com/anddea/revanced-patches/commit/2435c4f781596d0b370e8ca244a30dbdc793c696))
+* **YouTube:** Add `Hook YouTube Music actions` patch ([72b61d1](https://github.com/anddea/revanced-patches/commit/72b61d1bc2bac38e38e9ae70a1e7b8a6d0fc03ee))
+
+# [2.229.0](https://github.com/anddea/revanced-patches/compare/v2.228.0...v2.229.0) (2024-09-30)
+
+
+### Bug Fixes
+
+* Revert bump dependencies ([d8f988b](https://github.com/anddea/revanced-patches/commit/d8f988bd955f31bd6c4874454585a32d666f942e))
+* **YouTube - Disable force auto captions:** Patch doesn't work with Shorts ([a01edc8](https://github.com/anddea/revanced-patches/commit/a01edc84ef41134f5b63b9c84e36ecf20b37bd36))
+* **YouTube Music - Disable auto captions:** Captions cannot be changed when `Disable forced auto captions` is turned on ([ec8d633](https://github.com/anddea/revanced-patches/commit/ec8d63331c5701979f89be90cf5cdfb746e02905))
+* **YouTube Music - GmsCore support:** Can't share Stories to Facebook, Instagram and Snapchat ([01ec72a](https://github.com/anddea/revanced-patches/commit/01ec72a993391d31be06783d2a11a787412dc245))
+* **YouTube Music - SponsorBlock:** SponsorBlock segments at the end of a song cause the player to get stuck ([d986a01](https://github.com/anddea/revanced-patches/commit/d986a0166eb925ec334afdf68dee706e8a3337f6))
+* **YouTube Music:** Patch failed because of some missing strings ([29a3874](https://github.com/anddea/revanced-patches/commit/29a38742cd8a72357c2a4f2de42e97effbd11e23))
+
+
+### Features
+
+* **Hide ads:** Remove `Close fullscreen ads` setting ([5dc3f7a](https://github.com/anddea/revanced-patches/commit/5dc3f7a4a8d80140fcef4d2a89b8ae101e3441b7))
+* **YouTube - Custom branding icon:** New themed icon for `Xisr Yellow` ([#831](https://github.com/anddea/revanced-patches/issues/831)) ([ac08786](https://github.com/anddea/revanced-patches/commit/ac08786e3248f8d8a994b3941237e515396fd578))
+* **YouTube - Hide ads:** Add `Hide promotion alert banner` setting ([2350d94](https://github.com/anddea/revanced-patches/commit/2350d94136b22403b7aecc6aa91d6db687bb7d4b))
+* **YouTube - Hide feed components:** Add `Hide expandable shelves` setting ([482d48d](https://github.com/anddea/revanced-patches/commit/482d48d6a495302c14be0926e753548901bd0358))
+* **YouTube - Hide feed components:** Selectively hide video by views for Home / Subscription / Search ([c842248](https://github.com/anddea/revanced-patches/commit/c842248e074399350ea73c1067bf1d5bc1f6da42))
+* **YouTube - Hide player flyout menu:** Restore `Hide Ambient mode menu` setting ([d99bdef](https://github.com/anddea/revanced-patches/commit/d99bdefeb4ef477c5277b00d2c64497858604b68))
+* **YouTube - Overlay buttons:** Add an option to select a different downloader on long press ([6f47b80](https://github.com/anddea/revanced-patches/commit/6f47b80d89abf9ce4b786a9eb7fa3f8db7257edc))
+* **YouTube - Player components:** Add `Disable switch mix playlists` setting ([5d8650f](https://github.com/anddea/revanced-patches/commit/5d8650f14d8935ecaf670689e4c8f24042022dc1))
+* **YouTube - Seekbar components:** Add patch options to set Cairo seekbar colors ([b956855](https://github.com/anddea/revanced-patches/commit/b956855183f3f6c85a41e0d3812da6ff71ec8157))
+* **YouTube - SponsorBlock:** Add patch option to select new segment window alignment ([28fc1d5](https://github.com/anddea/revanced-patches/commit/28fc1d5527181a123129439a3384335a28c98346))
+* **YouTube - SponsorBlock:** Make new segment window draggable ([fd5b5e6](https://github.com/anddea/revanced-patches/commit/fd5b5e68a3dde895baa212e805293f0e3f57a1b6))
+* **YouTube - Video playback:** Add `Disable playback speed for music` setting ([b77e952](https://github.com/anddea/revanced-patches/commit/b77e9524ef4d8ab6d573e77c516a596ad5ac4652))
+* **YouTube - Video playback:** Add `Disable VP9 codec` setting ([559236b](https://github.com/anddea/revanced-patches/commit/559236b9681b24c22901c4a7b1d8df7c2e48de7e))
+* **YouTube Music - Custom branding icon:** Add patch option `RestoreOldSplashIcon` ([e272302](https://github.com/anddea/revanced-patches/commit/e27230246fdf82a35fe035f57a3cc02c16b75664))
+* **YouTube Music - Custom branding icon:** Update monochrome icon for `afn_red` & `afn_blue` ([88c4da1](https://github.com/anddea/revanced-patches/commit/88c4da1306a99d919ad3b092de937a8800d8c317))
+* **YouTube Music - Hide ads:** Add `Hide promotion alert banner` setting ([ca6263c](https://github.com/anddea/revanced-patches/commit/ca6263c18f823507c55d77e15a1aeb268ab90352))
+* **YouTube Music:** Add support version `6.20.51` ([6d89cb0](https://github.com/anddea/revanced-patches/commit/6d89cb09228a5dd30bdc00caa040361c84a48032))
+* **YouTube Music:** Add support versions `7.16.53` ~ `7.17.51` ([390cabe](https://github.com/anddea/revanced-patches/commit/390cabeff02871b89cd3440de148a82008235f08))
+* **YouTube Music:** Drop support version `7.17.51` ([f49cd50](https://github.com/anddea/revanced-patches/commit/f49cd5068b6bf6827353d5c11c9b1e05eaf5f776))
+* **YouTube Music:** Rename `Enable Cairo splash animation` to `Disable Cairo splash animation` ([37373c9](https://github.com/anddea/revanced-patches/commit/37373c95f571545e220f125ea8645ade3459e045))
+
+# [2.229.0-dev.7](https://github.com/anddea/revanced-patches/compare/v2.229.0-dev.6...v2.229.0-dev.7) (2024-09-19)
+
+
+### Features
+
+* **YouTube - SponsorBlock:** Add patch option to select new segment window alignment ([28fc1d5](https://github.com/anddea/revanced-patches/commit/28fc1d5527181a123129439a3384335a28c98346))
+
+# [2.229.0-dev.6](https://github.com/anddea/revanced-patches/compare/v2.229.0-dev.5...v2.229.0-dev.6) (2024-09-17)
+
+
+### Features
+
+* **YouTube - Custom branding icon:** New themed icon for `Xisr Yellow` ([#831](https://github.com/anddea/revanced-patches/issues/831)) ([ac08786](https://github.com/anddea/revanced-patches/commit/ac08786e3248f8d8a994b3941237e515396fd578))
+* **YouTube - Seekbar components:** Add patch options to set Cairo seekbar colors ([b956855](https://github.com/anddea/revanced-patches/commit/b956855183f3f6c85a41e0d3812da6ff71ec8157))
+* **YouTube - SponsorBlock:** Make new segment window draggable ([fd5b5e6](https://github.com/anddea/revanced-patches/commit/fd5b5e68a3dde895baa212e805293f0e3f57a1b6))
+
+# [2.229.0-dev.5](https://github.com/anddea/revanced-patches/compare/v2.229.0-dev.4...v2.229.0-dev.5) (2024-09-16)
+
+
+### Bug Fixes
+
+* **YouTube Music - Disable auto captions:** Captions cannot be changed when `Disable forced auto captions` is turned on ([ec8d633](https://github.com/anddea/revanced-patches/commit/ec8d63331c5701979f89be90cf5cdfb746e02905))
+* **YouTube Music - GmsCore support:** Can't share Stories to Facebook, Instagram and Snapchat ([01ec72a](https://github.com/anddea/revanced-patches/commit/01ec72a993391d31be06783d2a11a787412dc245))
+
+
+### Features
+
+* **Hide ads:** Remove `Close fullscreen ads` setting ([5dc3f7a](https://github.com/anddea/revanced-patches/commit/5dc3f7a4a8d80140fcef4d2a89b8ae101e3441b7))
+* **YouTube - Hide feed components:** Add `Hide expandable shelves` setting ([482d48d](https://github.com/anddea/revanced-patches/commit/482d48d6a495302c14be0926e753548901bd0358))
+* **YouTube - Hide feed components:** Selectively hide video by views for Home / Subscription / Search ([c842248](https://github.com/anddea/revanced-patches/commit/c842248e074399350ea73c1067bf1d5bc1f6da42))
+* **YouTube - Video playback:** Add `Disable VP9 codec` setting ([559236b](https://github.com/anddea/revanced-patches/commit/559236b9681b24c22901c4a7b1d8df7c2e48de7e))
+* **YouTube Music - Custom branding icon:** Update monochrome icon for `afn_red` & `afn_blue` ([88c4da1](https://github.com/anddea/revanced-patches/commit/88c4da1306a99d919ad3b092de937a8800d8c317))
+* **YouTube Music:** Add support version `6.20.51` ([6d89cb0](https://github.com/anddea/revanced-patches/commit/6d89cb09228a5dd30bdc00caa040361c84a48032))
+* **YouTube Music:** Drop support version `7.17.51` ([f49cd50](https://github.com/anddea/revanced-patches/commit/f49cd5068b6bf6827353d5c11c9b1e05eaf5f776))
+
+# [2.229.0-dev.4](https://github.com/anddea/revanced-patches/compare/v2.229.0-dev.3...v2.229.0-dev.4) (2024-09-09)
+
+
+### Features
+
+* **YouTube - Overlay buttons:** Add an option to select a different downloader on long press ([6f47b80](https://github.com/anddea/revanced-patches/commit/6f47b80d89abf9ce4b786a9eb7fa3f8db7257edc))
+* **YouTube Music - Custom branding icon:** Add patch option `RestoreOldSplashIcon` ([e272302](https://github.com/anddea/revanced-patches/commit/e27230246fdf82a35fe035f57a3cc02c16b75664))
+* **YouTube Music:** Rename `Enable Cairo splash animation` to `Disable Cairo splash animation` ([37373c9](https://github.com/anddea/revanced-patches/commit/37373c95f571545e220f125ea8645ade3459e045))
+
+# [2.229.0-dev.3](https://github.com/anddea/revanced-patches/compare/v2.229.0-dev.2...v2.229.0-dev.3) (2024-09-06)
+
+
+### Bug Fixes
+
+* **YouTube Music:** Patch failed because of some missing strings ([29a3874](https://github.com/anddea/revanced-patches/commit/29a38742cd8a72357c2a4f2de42e97effbd11e23))
+
+# [2.229.0-dev.2](https://github.com/anddea/revanced-patches/compare/v2.229.0-dev.1...v2.229.0-dev.2) (2024-09-06)
+
+
+### Bug Fixes
+
+* Revert bump dependencies ([d8f988b](https://github.com/anddea/revanced-patches/commit/d8f988bd955f31bd6c4874454585a32d666f942e))
+
+# [2.229.0-dev.1](https://github.com/anddea/revanced-patches/compare/v2.228.0...v2.229.0-dev.1) (2024-09-06)
+
+
+### Bug Fixes
+
+* **YouTube - Disable force auto captions:** Patch doesn't work with Shorts ([a01edc8](https://github.com/anddea/revanced-patches/commit/a01edc84ef41134f5b63b9c84e36ecf20b37bd36))
+* **YouTube Music - SponsorBlock:** SponsorBlock segments at the end of a song cause the player to get stuck ([d986a01](https://github.com/anddea/revanced-patches/commit/d986a0166eb925ec334afdf68dee706e8a3337f6))
+
+
+### Features
+
+* **YouTube - Hide ads:** Add `Hide promotion alert banner` setting ([2350d94](https://github.com/anddea/revanced-patches/commit/2350d94136b22403b7aecc6aa91d6db687bb7d4b))
+* **YouTube - Hide player flyout menu:** Restore `Hide Ambient mode menu` setting ([d99bdef](https://github.com/anddea/revanced-patches/commit/d99bdefeb4ef477c5277b00d2c64497858604b68))
+* **YouTube - Player components:** Add `Disable switch mix playlists` setting ([5d8650f](https://github.com/anddea/revanced-patches/commit/5d8650f14d8935ecaf670689e4c8f24042022dc1))
+* **YouTube - Video playback:** Add `Disable playback speed for music` setting ([b77e952](https://github.com/anddea/revanced-patches/commit/b77e9524ef4d8ab6d573e77c516a596ad5ac4652))
+* **YouTube Music - Hide ads:** Add `Hide promotion alert banner` setting ([ca6263c](https://github.com/anddea/revanced-patches/commit/ca6263c18f823507c55d77e15a1aeb268ab90352))
+* **YouTube Music:** Add support versions `7.16.53` ~ `7.17.51` ([390cabe](https://github.com/anddea/revanced-patches/commit/390cabeff02871b89cd3440de148a82008235f08))
+
+# [2.228.0](https://github.com/anddea/revanced-patches/compare/v2.227.0...v2.228.0) (2024-09-05)
+
+
+### Bug Fixes
+
+* **YouTube - Client spoof:** Some side effects of iOS client ([823711e](https://github.com/anddea/revanced-patches/commit/823711e84bc95b88faa620690ee0fb0960b93808))
+* **YouTube - Custom branding icon:** Patch failed for some icons ([97bc461](https://github.com/anddea/revanced-patches/commit/97bc461be57e5ed4f37dd56b3df19cfb933b4d39))
+* **YouTube - Custom branding:** Fix patch error regarding `Xisr Yellow` ([dae0a79](https://github.com/anddea/revanced-patches/commit/dae0a793acd2c50e8bda2c8809d3e377101d8c41))
+* **YouTube - Custom Branding:** Fixed broken splash animation for `Xisr Yellow` ([#758](https://github.com/anddea/revanced-patches/issues/758)) ([b5ea4b1](https://github.com/anddea/revanced-patches/commit/b5ea4b1f41a43d8ab473bea0212d7f42564dd5b5))
+* **YouTube - Disable auto captions:** Turning on `Disable forced auto captions` will disable subtitles ([f4dc6d3](https://github.com/anddea/revanced-patches/commit/f4dc6d39b75a61ae954cc7657551535499826f5f))
+* **YouTube - Hide feed components:** Sometimes `Hide carousel shelf` setting doesn't work ([f53ce46](https://github.com/anddea/revanced-patches/commit/f53ce46c1461ac8699af767f03f92a20e7c1ed65))
+* **YouTube - Hook download actions:** `Override playlist download button` setting does not work in `Download playlist` menu of flyout panel ([2c4d8c3](https://github.com/anddea/revanced-patches/commit/2c4d8c315cae4339331398f708362c4c4e8343fa))
+* **YouTube - Hook download actions:** Video download button was not responding ([fa53ea5](https://github.com/anddea/revanced-patches/commit/fa53ea58b6011eb0627d48f6f8bc85d9092b26f3))
+* **YouTube - Overlay buttons:** `Always repeat` button doesn't work when the video is minimized ([e03741f](https://github.com/anddea/revanced-patches/commit/e03741f0ac8073186f993a76495ccc86bde1a092))
+* **YouTube - Overlay buttons:** Removed unused `Experimental flags` section ([d96ee79](https://github.com/anddea/revanced-patches/commit/d96ee7945b5f97b3e3d4fe94ff5a32f0ec75c8c7))
+* **YouTube - Settings:** Update default values for "Hide low views video", "Spoof streaming data" and BottomMargin of "Overlay buttons" ([9bb8ceb](https://github.com/anddea/revanced-patches/commit/9bb8ceb65d4b43e707e7aec8d37b92190df3cbbf))
+* **YouTube - SponsorBlock:** Improve create segment manual seek accuracy ([f0cefa8](https://github.com/anddea/revanced-patches/commit/f0cefa85a4288bda0e3f7324629f1c2a0bcc7839))
+* **YouTube - Spoof client:** Change default values ([b60c09a](https://github.com/anddea/revanced-patches/commit/b60c09afb2f7d6faa899cc0dee8e063989d25a90))
+* **YouTube - Spoof client:** Fix background playback issue with livestream on iOS clients ([0ef9a65](https://github.com/anddea/revanced-patches/commit/0ef9a655ce4a5f4ba5cd72ff3138b7e7d03b2613))
+* **YouTube - Spoof client:** Partial fix for watch history issue of brand accounts on iOS clients ([2294ffb](https://github.com/anddea/revanced-patches/commit/2294ffb1640661e4421887eef8b3bd6ddff49fc1))
+* **YouTube - Spoof streaming data:** App crashes when loading ads in Shorts ([e3e6a31](https://github.com/anddea/revanced-patches/commit/e3e6a311299d9496e95818a69e7b4867f7da07d9))
+* **YouTube - Spoof streaming data:** Display spoofing side effects option ([7fcced7](https://github.com/anddea/revanced-patches/commit/7fcced78cbe85caa898b94b27b5ad151c5ff6e26))
+* **YouTube - Toolbar components:** Turning on the `Hide voice search button` setting makes the margin of the searchbar 0 ([ca02dba](https://github.com/anddea/revanced-patches/commit/ca02dba30710decc4ddea07318e72a9966124665))
+* **YouTube - Translations:** Fix `Italian` translations ([#796](https://github.com/anddea/revanced-patches/issues/796)) ([66f0d1b](https://github.com/anddea/revanced-patches/commit/66f0d1bfd839c0f597e577856bc9e2537ae2e9a3))
+* **YouTube - Translations:** Update Italian translation ([936c740](https://github.com/anddea/revanced-patches/commit/936c74067d896cc779fc15eec61116eb20862f09))
+* **YouTube - Video information:** App crash when casting ([ea08ad8](https://github.com/anddea/revanced-patches/commit/ea08ad8845a6b32b1a47995ed607e952c30630a5))
+* **YouTube - Video playback:** Update the option to disable toasts when changing the default values ([4d69bbb](https://github.com/anddea/revanced-patches/commit/4d69bbb6cced058650f7917bb1c74db3be90f2fa))
+* **YouTube Music - GmsCore support:** `Open GmsCore` setting is not added if user only includes `GmsCore support` patch ([697ef75](https://github.com/anddea/revanced-patches/commit/697ef758c940c7d6e6fc2c3fe0ced98234807e77))
+* **YouTube Music - GmsCore support:** YT Music crashes when using the `Open GmsCore` setting ([ea869f4](https://github.com/anddea/revanced-patches/commit/ea869f477841aa74bcab62d73674ecea7ae11519))
+* **YouTube Music - Sanitize sharing links:** Tracking parameters are not removed from the system share panel ([5774c2d](https://github.com/anddea/revanced-patches/commit/5774c2d3d98781a6ba871f39383ee56f82eb3fbe))
+* **YouTube:** `Overlay buttons` patch fails ([09c8cc5](https://github.com/anddea/revanced-patches/commit/09c8cc5e3d2f315ce1d5182341ea7ff34633495d))
+
+
+### Features
+
+* **Custom Branding Icons:** Change default icon to `Revancify Yellow` ([#752](https://github.com/anddea/revanced-patches/issues/752)) ([60163db](https://github.com/anddea/revanced-patches/commit/60163dbde9d90035763ed66827515485393e6b4d))
+* Merge RVX v4.12.1-dev.1 ([#791](https://github.com/anddea/revanced-patches/issues/791)) ([de1ddcf](https://github.com/anddea/revanced-patches/commit/de1ddcfe050660c044f68e2610590d94eff45b10))
+* Merge v4.13.1-dev.3 ([59f0424](https://github.com/anddea/revanced-patches/commit/59f0424e8b43833e4728b570b88c2f1aef1d8926))
+* **YouTube - Default Quality & Speed:** Add an option to disable toasts when changing the default values ([cc95f31](https://github.com/anddea/revanced-patches/commit/cc95f316485fe1759621b37471980c0ffe14d7cd))
+* **YouTube - Description components:** Add `Hide Contents section` setting ([e8358ff](https://github.com/anddea/revanced-patches/commit/e8358ffc680693e2923e3c03933b9fcfb0874eb7))
+* **YouTube - Download Playlist Button:** Add playlist download button ([#761](https://github.com/anddea/revanced-patches/issues/761)) ([449d45a](https://github.com/anddea/revanced-patches/commit/449d45aaff4be67937a89c177f3e6ee8b8e5d489))
+* **YouTube - Hide feed components:** Add syntax to match whole keywords and not substrings ([8ac266d](https://github.com/anddea/revanced-patches/commit/8ac266dd7679bd69af8f95faf816c6bdcc8b2e71))
+* **YouTube - Hide player flyout menu:** Remove `Hide Ambient mode menu` setting ([62f94f5](https://github.com/anddea/revanced-patches/commit/62f94f50b03dd1dc3b99116f31089c91b65c23e9))
+* **YouTube - Hook download actions:** Add package field in `Hook download actions` patch ([d32838a](https://github.com/anddea/revanced-patches/commit/d32838acf3f36bd01e5745516c993d9c69014b87))
+* **YouTube - Overlay buttons:** Add `Collapse` button and update thin-type overlay button icons ([ac90242](https://github.com/anddea/revanced-patches/commit/ac902425787b1d5786f4b6034ca1185e4074d0ba))
+* **YouTube - Overlay buttons:** Add patch option `Change top buttons` ([504a1fe](https://github.com/anddea/revanced-patches/commit/504a1fe46ae97b7b328c4245941c69be698bb4f3))
+* **YouTube - Player components:** Add `Hide zoom overlay` setting ([00640e6](https://github.com/anddea/revanced-patches/commit/00640e661753802439dfba65827307e7e703fb14))
+* **YouTube - Settings:** Show categories while searching settings ([177b016](https://github.com/anddea/revanced-patches/commit/177b016c5918ebe3778135c6eab235e7841ebb65))
+* **YouTube - Shorts components:** Add `Hide Use this sound button` setting ([aec5326](https://github.com/anddea/revanced-patches/commit/aec5326712262a8a16545a0ef1621a7c77eaa243))
+* **YouTube - Shorts components:** Add settings - `Hide floating button`, `Hide Trends button`, `Hide Use template button` ([b9f0bd8](https://github.com/anddea/revanced-patches/commit/b9f0bd8ee2b714f9b3219edcff2b7abc50efb7af))
+* **YouTube - Shorts components:** Clarify the description of some settings ([53b690c](https://github.com/anddea/revanced-patches/commit/53b690ca1ea02106e273ccd616dd163f8a2189e6))
+* **YouTube - Shorts components:** Move `Change Shorts repeat state` setting to `Experimental Flags` ([112060a](https://github.com/anddea/revanced-patches/commit/112060a75316b293671f1cec07730d7a05ad3a33))
+* **YouTube - Spoof client:** Allow forcing AVC codec with iOS ([beb94d1](https://github.com/anddea/revanced-patches/commit/beb94d1d5cecf039c2ede7cdf2c8199a5739b0b9))
+* **YouTube & Music - Custom branding icon:** Rename `Revancify Yellow` To `Xisr Yellow` ([#756](https://github.com/anddea/revanced-patches/issues/756)) ([26d7deb](https://github.com/anddea/revanced-patches/commit/26d7debb8d40013b65b66ac1d56f13c01755ea23))
+* **YouTube & Music - Custom branding icon:** Update `Xisr Yellow` icon ([#755](https://github.com/anddea/revanced-patches/issues/755)) ([c1dfd1f](https://github.com/anddea/revanced-patches/commit/c1dfd1f20b777828f57c69bebb9d1f85190f8c7c))
+* **YouTube Music - Hide layout components:** Add `Hide settings menu` setting ([78b61dc](https://github.com/anddea/revanced-patches/commit/78b61dc799c4a3106a6800b176f464b8465b27d7))
+* **YouTube Music - Player components:** Add settings `Disable miniplayer gesture`, `Disable player gesture` ([0bf84f9](https://github.com/anddea/revanced-patches/commit/0bf84f9d4cf3cad63b4cb6adbac1334be966e5ed))
+* **YouTube Music - Video playback:** Add an option to disable toasts when changing the default values ([a663655](https://github.com/anddea/revanced-patches/commit/a66365558a0fb489842bdd73324df798c090549b))
+* **YouTube Music:** Add `Change share sheet` patch ([f4ebfff](https://github.com/anddea/revanced-patches/commit/f4ebfffa3dbd7fe5947b4d7e77ee80bbaf70a627))
+* **YouTube Music:** Add support version `7.10.52` ([a842d17](https://github.com/anddea/revanced-patches/commit/a842d1743d13dac33db8ba0179f18289b4a8a742))
+* **YouTube Music:** Add support version `7.11.51` ~ `7.12.51` ([b8a62ae](https://github.com/anddea/revanced-patches/commit/b8a62aeb0528f5ef513330ae5ef1790ffe4cd920))
+* **YouTube Music:** Add support version `7.12.52` ~ `7.13.52` ([4670f1d](https://github.com/anddea/revanced-patches/commit/4670f1d040dcf71376b5870b4330052800fadbd7))
+* **YouTube Music:** Add support versions `7.15.52` ~ `7.16.52` ([26ff170](https://github.com/anddea/revanced-patches/commit/26ff170d3acb87a2348f2b3e646bc8afc9936185))
+* **YouTube:** Add `Change share sheet` patch ([af81ee7](https://github.com/anddea/revanced-patches/commit/af81ee72b1c4e5d2d86753d833e038ce99ae55de))
+* **YouTube:** Add `Spoof streaming data` patch ([a792753](https://github.com/anddea/revanced-patches/commit/a792753b2bec84790ee4023c8572f712415097e2))
+* **YouTube:** Add `Watch history` patch ([f1fd6e6](https://github.com/anddea/revanced-patches/commit/f1fd6e68f19d9c6ba45efc081e7ac50d42ef8529))
+* **YouTube:** Remove `Spoof client` patch ([4c7538e](https://github.com/anddea/revanced-patches/commit/4c7538e921d1c6afef7e4eeb19c2ac1bae9b86d5))
+
+# [2.228.0-dev.15](https://github.com/anddea/revanced-patches/compare/v2.228.0-dev.14...v2.228.0-dev.15) (2024-09-03)
+
+
+### Features
+
+* **YouTube - Settings:** Show categories while searching settings ([177b016](https://github.com/anddea/revanced-patches/commit/177b016c5918ebe3778135c6eab235e7841ebb65))
+
+# [2.228.0-dev.14](https://github.com/anddea/revanced-patches/compare/v2.228.0-dev.13...v2.228.0-dev.14) (2024-09-02)
+
+
+### Bug Fixes
+
+* **YouTube - Settings:** Update default values for "Hide low views video", "Spoof streaming data" and BottomMargin of "Overlay buttons" ([9bb8ceb](https://github.com/anddea/revanced-patches/commit/9bb8ceb65d4b43e707e7aec8d37b92190df3cbbf))
+* **YouTube - Spoof streaming data:** Display spoofing side effects option ([7fcced7](https://github.com/anddea/revanced-patches/commit/7fcced78cbe85caa898b94b27b5ad151c5ff6e26))
+
+# [2.228.0-dev.13](https://github.com/anddea/revanced-patches/compare/v2.228.0-dev.12...v2.228.0-dev.13) (2024-09-01)
+
+
+### Bug Fixes
+
+* **YouTube - Spoof streaming data:** App crashes when loading ads in Shorts ([e3e6a31](https://github.com/anddea/revanced-patches/commit/e3e6a311299d9496e95818a69e7b4867f7da07d9))
+* **YouTube - Video playback:** Update the option to disable toasts when changing the default values ([4d69bbb](https://github.com/anddea/revanced-patches/commit/4d69bbb6cced058650f7917bb1c74db3be90f2fa))
+* **YouTube Music - GmsCore support:** `Open GmsCore` setting is not added if user only includes `GmsCore support` patch ([697ef75](https://github.com/anddea/revanced-patches/commit/697ef758c940c7d6e6fc2c3fe0ced98234807e77))
+* **YouTube Music - GmsCore support:** YT Music crashes when using the `Open GmsCore` setting ([ea869f4](https://github.com/anddea/revanced-patches/commit/ea869f477841aa74bcab62d73674ecea7ae11519))
+
+
+### Features
+
+* Merge v4.13.1-dev.3 ([59f0424](https://github.com/anddea/revanced-patches/commit/59f0424e8b43833e4728b570b88c2f1aef1d8926))
+* **YouTube - Hide feed components:** Add syntax to match whole keywords and not substrings ([8ac266d](https://github.com/anddea/revanced-patches/commit/8ac266dd7679bd69af8f95faf816c6bdcc8b2e71))
+* **YouTube - Hide player flyout menu:** Remove `Hide Ambient mode menu` setting ([62f94f5](https://github.com/anddea/revanced-patches/commit/62f94f50b03dd1dc3b99116f31089c91b65c23e9))
+* **YouTube - Overlay buttons:** Add `Collapse` button and update thin-type overlay button icons ([ac90242](https://github.com/anddea/revanced-patches/commit/ac902425787b1d5786f4b6034ca1185e4074d0ba))
+* **YouTube - Shorts components:** Add `Hide Use this sound button` setting ([aec5326](https://github.com/anddea/revanced-patches/commit/aec5326712262a8a16545a0ef1621a7c77eaa243))
+* **YouTube - Shorts components:** Add settings - `Hide floating button`, `Hide Trends button`, `Hide Use template button` ([b9f0bd8](https://github.com/anddea/revanced-patches/commit/b9f0bd8ee2b714f9b3219edcff2b7abc50efb7af))
+* **YouTube - Shorts components:** Clarify the description of some settings ([53b690c](https://github.com/anddea/revanced-patches/commit/53b690ca1ea02106e273ccd616dd163f8a2189e6))
+* **YouTube - Spoof client:** Allow forcing AVC codec with iOS ([beb94d1](https://github.com/anddea/revanced-patches/commit/beb94d1d5cecf039c2ede7cdf2c8199a5739b0b9))
+* **YouTube Music - Video playback:** Add an option to disable toasts when changing the default values ([a663655](https://github.com/anddea/revanced-patches/commit/a66365558a0fb489842bdd73324df798c090549b))
+* **YouTube Music:** Add support versions `7.15.52` ~ `7.16.52` ([26ff170](https://github.com/anddea/revanced-patches/commit/26ff170d3acb87a2348f2b3e646bc8afc9936185))
+* **YouTube:** Add `Spoof streaming data` patch ([a792753](https://github.com/anddea/revanced-patches/commit/a792753b2bec84790ee4023c8572f712415097e2))
+* **YouTube:** Remove `Spoof client` patch ([4c7538e](https://github.com/anddea/revanced-patches/commit/4c7538e921d1c6afef7e4eeb19c2ac1bae9b86d5))
+
+# [2.228.0-dev.12](https://github.com/anddea/revanced-patches/compare/v2.228.0-dev.11...v2.228.0-dev.12) (2024-08-16)
+
+
+### Bug Fixes
+
+* **YouTube - Video information:** App crash when casting ([ea08ad8](https://github.com/anddea/revanced-patches/commit/ea08ad8845a6b32b1a47995ed607e952c30630a5))
+* **YouTube Music - Sanitize sharing links:** Tracking parameters are not removed from the system share panel ([5774c2d](https://github.com/anddea/revanced-patches/commit/5774c2d3d98781a6ba871f39383ee56f82eb3fbe))
+
+
+### Features
+
+* **YouTube:** Add `Change share sheet` patch ([af81ee7](https://github.com/anddea/revanced-patches/commit/af81ee72b1c4e5d2d86753d833e038ce99ae55de))
+
+# [2.228.0-dev.11](https://github.com/anddea/revanced-patches/compare/v2.228.0-dev.10...v2.228.0-dev.11) (2024-08-08)
+
+
+### Bug Fixes
+
+* **YouTube - Translations:** Update Italian translation ([936c740](https://github.com/anddea/revanced-patches/commit/936c74067d896cc779fc15eec61116eb20862f09))
+
+# [2.228.0-dev.10](https://github.com/anddea/revanced-patches/compare/v2.228.0-dev.9...v2.228.0-dev.10) (2024-08-08)
+
+
+### Bug Fixes
+
+* **YouTube - Translations:** Fix `Italian` translations ([#796](https://github.com/anddea/revanced-patches/issues/796)) ([66f0d1b](https://github.com/anddea/revanced-patches/commit/66f0d1bfd839c0f597e577856bc9e2537ae2e9a3))
+
+# [2.228.0-dev.9](https://github.com/anddea/revanced-patches/compare/v2.228.0-dev.8...v2.228.0-dev.9) (2024-08-07)
+
+
+### Bug Fixes
+
+* **YouTube - Overlay buttons:** Removed unused `Experimental flags` section ([d96ee79](https://github.com/anddea/revanced-patches/commit/d96ee7945b5f97b3e3d4fe94ff5a32f0ec75c8c7))
+
+# [2.228.0-dev.8](https://github.com/anddea/revanced-patches/compare/v2.228.0-dev.7...v2.228.0-dev.8) (2024-08-07)
+
+
+### Bug Fixes
+
+* **YouTube - Hook download actions:** `Override playlist download button` setting does not work in `Download playlist` menu of flyout panel ([2c4d8c3](https://github.com/anddea/revanced-patches/commit/2c4d8c315cae4339331398f708362c4c4e8343fa))
+* **YouTube - Hook download actions:** Video download button was not responding ([fa53ea5](https://github.com/anddea/revanced-patches/commit/fa53ea58b6011eb0627d48f6f8bc85d9092b26f3))
+* **YouTube - Overlay buttons:** `Always repeat` button doesn't work when the video is minimized ([e03741f](https://github.com/anddea/revanced-patches/commit/e03741f0ac8073186f993a76495ccc86bde1a092))
+* **YouTube:** `Overlay buttons` patch fails ([09c8cc5](https://github.com/anddea/revanced-patches/commit/09c8cc5e3d2f315ce1d5182341ea7ff34633495d))
+
+# [2.228.0-dev.7](https://github.com/anddea/revanced-patches/compare/v2.228.0-dev.6...v2.228.0-dev.7) (2024-08-07)
+
+
+### Bug Fixes
+
+* **YouTube - SponsorBlock:** Improve create segment manual seek accuracy ([f0cefa8](https://github.com/anddea/revanced-patches/commit/f0cefa85a4288bda0e3f7324629f1c2a0bcc7839))
+* **YouTube - Spoof client:** Change default values ([b60c09a](https://github.com/anddea/revanced-patches/commit/b60c09afb2f7d6faa899cc0dee8e063989d25a90))
+* **YouTube - Spoof client:** Fix background playback issue with livestream on iOS clients ([0ef9a65](https://github.com/anddea/revanced-patches/commit/0ef9a655ce4a5f4ba5cd72ff3138b7e7d03b2613))
+* **YouTube - Spoof client:** Partial fix for watch history issue of brand accounts on iOS clients ([2294ffb](https://github.com/anddea/revanced-patches/commit/2294ffb1640661e4421887eef8b3bd6ddff49fc1))
+
+
+### Features
+
+* Merge RVX v4.12.1-dev.1 ([#791](https://github.com/anddea/revanced-patches/issues/791)) ([de1ddcf](https://github.com/anddea/revanced-patches/commit/de1ddcfe050660c044f68e2610590d94eff45b10))
+* **YouTube - Hook download actions:** Add package field in `Hook download actions` patch ([d32838a](https://github.com/anddea/revanced-patches/commit/d32838acf3f36bd01e5745516c993d9c69014b87))
+* **YouTube - Shorts components:** Move `Change Shorts repeat state` setting to `Experimental Flags` ([112060a](https://github.com/anddea/revanced-patches/commit/112060a75316b293671f1cec07730d7a05ad3a33))
+* **YouTube Music:** Add `Change share sheet` patch ([f4ebfff](https://github.com/anddea/revanced-patches/commit/f4ebfffa3dbd7fe5947b4d7e77ee80bbaf70a627))
+* **YouTube Music:** Add support version `7.12.52` ~ `7.13.52` ([4670f1d](https://github.com/anddea/revanced-patches/commit/4670f1d040dcf71376b5870b4330052800fadbd7))
+
+# [2.228.0-dev.6](https://github.com/anddea/revanced-patches/compare/v2.228.0-dev.5...v2.228.0-dev.6) (2024-08-04)
+
+
+### Features
+
+* **YouTube - Default Quality & Speed:** Add an option to disable toasts when changing the default values ([cc95f31](https://github.com/anddea/revanced-patches/commit/cc95f316485fe1759621b37471980c0ffe14d7cd))
+
+# [2.228.0-dev.5](https://github.com/anddea/revanced-patches/compare/v2.228.0-dev.4...v2.228.0-dev.5) (2024-08-04)
+
+
+### Bug Fixes
+
+* **YouTube - Custom branding:** Fix patch error regarding `Xisr Yellow` ([dae0a79](https://github.com/anddea/revanced-patches/commit/dae0a793acd2c50e8bda2c8809d3e377101d8c41))
+
+# [2.228.0-dev.4](https://github.com/anddea/revanced-patches/compare/v2.228.0-dev.3...v2.228.0-dev.4) (2024-08-04)
+
+
+### Bug Fixes
+
+* **YouTube - Custom Branding:** Fixed broken splash animation for `Xisr Yellow` ([#758](https://github.com/anddea/revanced-patches/issues/758)) ([b5ea4b1](https://github.com/anddea/revanced-patches/commit/b5ea4b1f41a43d8ab473bea0212d7f42564dd5b5))
+
+
+### Features
+
+* **YouTube - Download Playlist Button:** Add playlist download button ([#761](https://github.com/anddea/revanced-patches/issues/761)) ([449d45a](https://github.com/anddea/revanced-patches/commit/449d45aaff4be67937a89c177f3e6ee8b8e5d489))
+
+# [2.228.0-dev.3](https://github.com/anddea/revanced-patches/compare/v2.228.0-dev.2...v2.228.0-dev.3) (2024-07-31)
+
+
+### Bug Fixes
+
+* **YouTube - Hide feed components:** Sometimes `Hide carousel shelf` setting doesn't work ([f53ce46](https://github.com/anddea/revanced-patches/commit/f53ce46c1461ac8699af767f03f92a20e7c1ed65))
+
+
+### Features
+
+* **YouTube Music - Player components:** Add settings `Disable miniplayer gesture`, `Disable player gesture` ([0bf84f9](https://github.com/anddea/revanced-patches/commit/0bf84f9d4cf3cad63b4cb6adbac1334be966e5ed))
+* **YouTube Music:** Add support version `7.11.51` ~ `7.12.51` ([b8a62ae](https://github.com/anddea/revanced-patches/commit/b8a62aeb0528f5ef513330ae5ef1790ffe4cd920))
+
+# [2.228.0-dev.2](https://github.com/anddea/revanced-patches/compare/v2.228.0-dev.1...v2.228.0-dev.2) (2024-07-29)
+
+
+### Bug Fixes
+
+* **YouTube - Client spoof:** Some side effects of iOS client ([823711e](https://github.com/anddea/revanced-patches/commit/823711e84bc95b88faa620690ee0fb0960b93808))
+* **YouTube - Disable auto captions:** Turning on `Disable forced auto captions` will disable subtitles ([f4dc6d3](https://github.com/anddea/revanced-patches/commit/f4dc6d39b75a61ae954cc7657551535499826f5f))
+* **YouTube - Toolbar components:** Turning on the `Hide voice search button` setting makes the margin of the searchbar 0 ([ca02dba](https://github.com/anddea/revanced-patches/commit/ca02dba30710decc4ddea07318e72a9966124665))
+
+
+### Features
+
+* **YouTube - Description components:** Add `Hide Contents section` setting ([e8358ff](https://github.com/anddea/revanced-patches/commit/e8358ffc680693e2923e3c03933b9fcfb0874eb7))
+* **YouTube - Overlay buttons:** Add patch option `Change top buttons` ([504a1fe](https://github.com/anddea/revanced-patches/commit/504a1fe46ae97b7b328c4245941c69be698bb4f3))
+* **YouTube - Player components:** Add `Hide zoom overlay` setting ([00640e6](https://github.com/anddea/revanced-patches/commit/00640e661753802439dfba65827307e7e703fb14))
+* **YouTube & Music - Custom branding icon:** Rename `Revancify Yellow` To `Xisr Yellow` ([#756](https://github.com/anddea/revanced-patches/issues/756)) ([26d7deb](https://github.com/anddea/revanced-patches/commit/26d7debb8d40013b65b66ac1d56f13c01755ea23))
+* **YouTube & Music - Custom branding icon:** Update `Xisr Yellow` icon ([#755](https://github.com/anddea/revanced-patches/issues/755)) ([c1dfd1f](https://github.com/anddea/revanced-patches/commit/c1dfd1f20b777828f57c69bebb9d1f85190f8c7c))
+* **YouTube Music - Hide layout components:** Add `Hide settings menu` setting ([78b61dc](https://github.com/anddea/revanced-patches/commit/78b61dc799c4a3106a6800b176f464b8465b27d7))
+* **YouTube Music:** Add support version `7.10.52` ([a842d17](https://github.com/anddea/revanced-patches/commit/a842d1743d13dac33db8ba0179f18289b4a8a742))
+* **YouTube:** Add `Watch history` patch ([f1fd6e6](https://github.com/anddea/revanced-patches/commit/f1fd6e68f19d9c6ba45efc081e7ac50d42ef8529))
+
+# [2.228.0-dev.1](https://github.com/anddea/revanced-patches/compare/v2.227.1-dev.1...v2.228.0-dev.1) (2024-07-26)
+
+
+### Features
+
+* **Custom Branding Icons:** Change default icon to `Revancify Yellow` ([#752](https://github.com/anddea/revanced-patches/issues/752)) ([60163db](https://github.com/anddea/revanced-patches/commit/60163dbde9d90035763ed66827515485393e6b4d))
+
+## [2.227.1-dev.1](https://github.com/anddea/revanced-patches/compare/v2.227.0...v2.227.1-dev.1) (2024-07-26)
+
+
+### Bug Fixes
+
+* **YouTube - Custom branding icon:** Patch failed for some icons ([97bc461](https://github.com/anddea/revanced-patches/commit/97bc461be57e5ed4f37dd56b3df19cfb933b4d39))
+
 # [2.227.0](https://github.com/anddea/revanced-patches/compare/v2.226.0...v2.227.0) (2024-07-25)
 
 

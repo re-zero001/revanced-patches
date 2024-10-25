@@ -103,6 +103,22 @@ object ResourceUtils {
                 }
         }
     }
+    
+    fun ResourceContext.setPreferenceScreenIcon(
+        category: String
+    ) {
+        this.xmlEditor[SETTINGS_HEADER_PATH].use { editor ->
+            editor.file.doRecursively loop@{
+                if (it !is Element) return@loop
+
+                it.getAttributeNode("android:key")?.let { attribute ->
+                    if (attribute.textContent == "revanced_preference_screen_$category") {
+                        it.cloneNodes(it.parentNode)
+                    }
+                }
+            }
+        }
+    }
 
     fun ResourceContext.sortPreferenceCategory(
         category: String

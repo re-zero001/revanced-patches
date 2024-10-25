@@ -11,6 +11,7 @@ import app.revanced.util.Utils.trimIndentMultiline
 import app.revanced.util.copyFile
 import app.revanced.util.copyResources
 import app.revanced.util.copyXmlNode
+import app.revanced.util.getResourceGroup
 import app.revanced.util.patch.BaseResourcePatch
 import app.revanced.util.underBarOrThrow
 
@@ -22,7 +23,7 @@ object CustomBrandingIconPatch : BaseResourcePatch(
     compatiblePackages = COMPATIBLE_PACKAGE,
     use = false,
 ) {
-    private const val DEFAULT_ICON_KEY = "Revancify Blue"
+    private const val DEFAULT_ICON_KEY = "Xisr Yellow"
 
     private val availableIcon = mapOf(
         "AFN Blue" to "afn_blue",
@@ -30,12 +31,15 @@ object CustomBrandingIconPatch : BaseResourcePatch(
         "MMT" to "mmt",
         "MMT Blue" to "mmt_blue",
         "MMT Green" to "mmt_green",
+        "MMT Orange" to "mmt_orange",
+        "MMT Pink" to "mmt_pink",
+        "MMT Turquoise" to "mmt_turquoise",
         "MMT Yellow" to "mmt_yellow",
-        DEFAULT_ICON_KEY to "revancify_blue",
+        "Revancify Blue" to "revancify_blue",
         "Revancify Red" to "revancify_red",
-        "Revancify Yellow" to "revancify_yellow",
         "Vanced Black" to "vanced_black",
         "Vanced Light" to "vanced_light",
+        DEFAULT_ICON_KEY to "xisr_yellow",
         "YouTube" to "youtube"
     )
 
@@ -98,12 +102,6 @@ object CustomBrandingIconPatch : BaseResourcePatch(
         "\$avd_anim__4",
         "avd_anim"
     ).map { "$it.xml" }.toTypedArray()
-
-    private fun List<String>.getResourceGroup(fileNames: Array<String>) = map { directory ->
-        ResourceGroup(
-            directory, *fileNames
-        )
-    }
 
     private val headerIconResourceGroups =
         drawableDirectories.getResourceGroup(headerIconResourceFileNames)
@@ -179,7 +177,7 @@ object CustomBrandingIconPatch : BaseResourcePatch(
         key = "RestoreOldSplashAnimation",
         default = true,
         title = "Restore old splash animation",
-        description = "Restores old style splash animation.",
+        description = "Restore the old style splash animation.",
         required = true
     )
 
@@ -192,7 +190,6 @@ object CustomBrandingIconPatch : BaseResourcePatch(
             .underBarOrThrow()
 
         val appIconResourcePath = "youtube/branding/$appIcon"
-        val stockResourcePath = "youtube/branding/stock"
 
         // Check if a custom path is used in the patch options.
         if (!availableIcon.containsValue(appIcon)) {
@@ -260,7 +257,7 @@ object CustomBrandingIconPatch : BaseResourcePatch(
                 }
 
                 context.copyXmlNode(
-                    "$stockResourcePath/splash",
+                    "$appIconResourcePath/splash",
                     "values-v31/styles.xml",
                     "resources"
                 )

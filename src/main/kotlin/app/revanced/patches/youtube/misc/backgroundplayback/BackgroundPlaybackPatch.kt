@@ -4,6 +4,7 @@ import app.revanced.patcher.data.BytecodeContext
 import app.revanced.patcher.extensions.InstructionExtensions.addInstruction
 import app.revanced.patcher.extensions.InstructionExtensions.addInstructions
 import app.revanced.patcher.extensions.InstructionExtensions.getInstruction
+import app.revanced.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.revanced.patches.youtube.misc.backgroundplayback.fingerprints.BackgroundPlaybackManagerFingerprint
 import app.revanced.patches.youtube.misc.backgroundplayback.fingerprints.BackgroundPlaybackSettingsFingerprint
 import app.revanced.patches.youtube.misc.backgroundplayback.fingerprints.KidsBackgroundPlaybackPolicyControllerFingerprint
@@ -13,9 +14,12 @@ import app.revanced.patches.youtube.utils.compatibility.Constants.COMPATIBLE_PAC
 import app.revanced.patches.youtube.utils.integrations.Constants.MISC_PATH
 import app.revanced.patches.youtube.utils.playertype.PlayerTypeHookPatch
 import app.revanced.patches.youtube.utils.settings.SettingsPatch
+import app.revanced.util.findOpcodeIndicesReversed
 import app.revanced.util.getWalkerMethod
 import app.revanced.util.patch.BaseBytecodePatch
 import app.revanced.util.resultOrThrow
+import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
@@ -23,7 +27,7 @@ import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 @Suppress("unused")
 object BackgroundPlaybackPatch : BaseBytecodePatch(
     name = "Remove background playback restrictions",
-    description = "Removes restrictions on background playback, including playing kids videos in the background.",
+    description = "Removes restrictions on background playback, including for music and kids videos.",
     dependencies = setOf(
         PlayerTypeHookPatch::class,
         SettingsPatch::class
@@ -38,13 +42,25 @@ object BackgroundPlaybackPatch : BaseBytecodePatch(
 ) {
     override fun execute(context: BytecodeContext) {
 
-        BackgroundPlaybackManagerFingerprint.resultOrThrow().mutableMethod.addInstructions(
-            0, """
-                invoke-static {}, $MISC_PATH/BackgroundPlaybackPatch;->playbackIsNotShort()Z
-                move-result v0
-                return v0
-                """
-        )
+        BackgroundPlaybackManagerFingerprint.resultOrThrow().mutableMethod.apply {
+            findOpcodeIndicesReversed(Opcode.RETURN).forEach { index ->
+                val register = getInstruction<OneRegisterInstruction>(index).registerA
+
+                // Replace to preserve control flow label.
+                replaceInstruction(
+                    index,
+                    "invoke-static { v$register }, $MISC_PATH/BackgroundPlaybackPatch;->allowBackgroundPlayback(Z)Z"
+                )
+
+                addInstructions(
+                    index + 1,
+                    """
+                       move-result v$register
+                       return v$register
+                    """
+                )
+            }
+        }
 
         // Enable background playback option in YouTube settings
         BackgroundPlaybackSettingsFingerprint.resultOrThrow().let {

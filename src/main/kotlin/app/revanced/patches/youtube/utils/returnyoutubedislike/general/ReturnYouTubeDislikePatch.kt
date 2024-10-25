@@ -2,27 +2,22 @@ package app.revanced.patches.youtube.utils.returnyoutubedislike.general
 
 import app.revanced.patcher.data.BytecodeContext
 import app.revanced.patcher.extensions.InstructionExtensions.addInstructions
-import app.revanced.patcher.extensions.InstructionExtensions.getInstruction
 import app.revanced.patcher.fingerprint.MethodFingerprint
 import app.revanced.patches.shared.litho.LithoFilterPatch
+import app.revanced.patches.shared.textcomponent.TextComponentPatch
 import app.revanced.patches.youtube.utils.compatibility.Constants.COMPATIBLE_PACKAGE
 import app.revanced.patches.youtube.utils.integrations.Constants.COMPONENTS_PATH
 import app.revanced.patches.youtube.utils.integrations.Constants.UTILS_PATH
 import app.revanced.patches.youtube.utils.returnyoutubedislike.general.fingerprints.DislikeFingerprint
 import app.revanced.patches.youtube.utils.returnyoutubedislike.general.fingerprints.LikeFingerprint
 import app.revanced.patches.youtube.utils.returnyoutubedislike.general.fingerprints.RemoveLikeFingerprint
-import app.revanced.patches.youtube.utils.returnyoutubedislike.general.fingerprints.TextComponentConstructorFingerprint
-import app.revanced.patches.youtube.utils.returnyoutubedislike.general.fingerprints.TextComponentContextFingerprint
 import app.revanced.patches.youtube.utils.returnyoutubedislike.rollingnumber.ReturnYouTubeDislikeRollingNumberPatch
 import app.revanced.patches.youtube.utils.returnyoutubedislike.shorts.ReturnYouTubeDislikeShortsPatch
 import app.revanced.patches.youtube.utils.settings.SettingsPatch
 import app.revanced.patches.youtube.video.information.VideoInformationPatch
 import app.revanced.patches.youtube.video.videoid.VideoIdPatch
-import app.revanced.util.getTargetIndexWithFieldReferenceTypeOrThrow
 import app.revanced.util.patch.BaseBytecodePatch
 import app.revanced.util.resultOrThrow
-import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
-import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
 @Suppress("unused")
 object ReturnYouTubeDislikePatch : BaseBytecodePatch(
@@ -33,6 +28,7 @@ object ReturnYouTubeDislikePatch : BaseBytecodePatch(
         ReturnYouTubeDislikeRollingNumberPatch::class,
         ReturnYouTubeDislikeShortsPatch::class,
         SettingsPatch::class,
+        TextComponentPatch::class,
         VideoInformationPatch::class
     ),
     compatiblePackages = COMPATIBLE_PACKAGE,
@@ -40,7 +36,6 @@ object ReturnYouTubeDislikePatch : BaseBytecodePatch(
         DislikeFingerprint,
         LikeFingerprint,
         RemoveLikeFingerprint,
-        TextComponentConstructorFingerprint
     )
 ) {
     private const val INTEGRATIONS_RYD_CLASS_DESCRIPTOR =
@@ -63,36 +58,7 @@ object ReturnYouTubeDislikePatch : BaseBytecodePatch(
             )
         }
 
-
-        TextComponentConstructorFingerprint.resultOrThrow().let { parentResult ->
-            // Resolves fingerprints
-            TextComponentContextFingerprint.resolve(context, parentResult.classDef)
-
-            TextComponentContextFingerprint.resultOrThrow().let {
-                it.mutableMethod.apply {
-                    val conversionContextFieldIndex =
-                        getTargetIndexWithFieldReferenceTypeOrThrow("Ljava/util/Map;") - 1
-                    val conversionContextFieldReference =
-                        getInstruction<ReferenceInstruction>(conversionContextFieldIndex).reference
-
-                    val charSequenceIndex =
-                        getTargetIndexWithFieldReferenceTypeOrThrow("Ljava/util/BitSet;") - 1
-                    val charSequenceRegister =
-                        getInstruction<TwoRegisterInstruction>(charSequenceIndex).registerA
-                    val freeRegister =
-                        getInstruction<TwoRegisterInstruction>(charSequenceIndex).registerB
-
-                    addInstructions(
-                        charSequenceIndex - 1, """
-                            move-object/from16 v$freeRegister, p0
-                            iget-object v$freeRegister, v$freeRegister, $conversionContextFieldReference
-                            invoke-static {v$freeRegister, v$charSequenceRegister}, $INTEGRATIONS_RYD_CLASS_DESCRIPTOR->onLithoTextLoaded(Ljava/lang/Object;Ljava/lang/CharSequence;)Ljava/lang/CharSequence;
-                            move-result-object v$charSequenceRegister
-                            """
-                    )
-                }
-            }
-        }
+        TextComponentPatch.hookTextComponent(INTEGRATIONS_RYD_CLASS_DESCRIPTOR)
 
         // region Inject newVideoLoaded event handler to update dislikes when a new video is loaded.
         VideoIdPatch.hookVideoId("$INTEGRATIONS_RYD_CLASS_DESCRIPTOR->newVideoLoaded(Ljava/lang/String;)V")

@@ -1,13 +1,14 @@
 package app.revanced.patches.youtube.player.overlaybuttons
 
 import app.revanced.patcher.data.ResourceContext
+import app.revanced.patcher.patch.options.PatchOption.PatchExtensions.booleanPatchOption
 import app.revanced.patcher.patch.options.PatchOption.PatchExtensions.stringPatchOption
 import app.revanced.patches.youtube.utils.compatibility.Constants.COMPATIBLE_PACKAGE
 import app.revanced.patches.youtube.utils.fix.bottomui.CfBottomUIPatch
 import app.revanced.patches.youtube.utils.integrations.Constants.OVERLAY_BUTTONS_PATH
+import app.revanced.patches.youtube.utils.pip.PiPStateHookPatch
 import app.revanced.patches.youtube.utils.playercontrols.PlayerControlsPatch
 import app.revanced.patches.youtube.utils.settings.SettingsPatch
-import app.revanced.patches.youtube.video.information.VideoInformationPatch
 import app.revanced.util.ResourceGroup
 import app.revanced.util.copyResources
 import app.revanced.util.copyXmlNode
@@ -28,15 +29,15 @@ object OverlayButtonsPatch : BaseResourcePatch(
     description = "Adds options to display overlay buttons in the video player.",
     dependencies = setOf(
         CfBottomUIPatch::class,
+        PiPStateHookPatch::class,
         PlayerControlsPatch::class,
         SettingsPatch::class,
-        OverlayButtonsBytecodePatch::class,
-        VideoInformationPatch::class
+        OverlayButtonsBytecodePatch::class
     ),
     compatiblePackages = COMPATIBLE_PACKAGE
 ) {
-    private const val DEFAULT_MARGIN = "0.0dip"
-    private const val WIDER_MARGIN = "6.0dip"
+    private const val DEFAULT_MARGIN = "5.0dip"
+    private const val WIDER_MARGIN = "10.0dip"
 
     private const val DEFAULT_ICON = "rounded"
 
@@ -64,6 +65,24 @@ object OverlayButtonsPatch : BaseResourcePatch(
         ),
         title = "Bottom margin",
         description = "The bottom margin for the overlay buttons and timestamp.",
+        required = true
+    )
+    
+    // Option to choose wider between-buttons space
+    private val WiderButtonsSpace by booleanPatchOption(
+        key = "WiderButtonsSpace",
+        default = false,
+        title = "Wider between-buttons space",
+        description = "Prevent adjacent button presses by increasing the horizontal spacing between buttons.",
+        required = true
+    )
+
+    // Option to change top buttons
+    private val ChangeTopButtons by booleanPatchOption(
+        key = "ChangeTopButtons",
+        default = false,
+        title = "Change top buttons",
+        description = "Change the icons at the top of the player.",
         required = true
     )
 
@@ -190,6 +209,12 @@ object OverlayButtonsPatch : BaseResourcePatch(
                             "@id/time_bar_chapter_title" to "16.0dip",
                             "@id/timestamps_container" to "14.0dip"
                         )
+                        
+                        val widerButtonsSpace = WiderButtonsSpace == true
+                        val layoutHeightWidth = if (widerButtonsSpace)
+                            "56.0dip"
+                        else
+                            "48.0dip"
 
                         if (isButton) {
                             node.setAttribute("android:layout_marginBottom", marginBottom)
@@ -197,15 +222,40 @@ object OverlayButtonsPatch : BaseResourcePatch(
                             node.setAttribute("android:paddingRight", "0.0dip")
                             node.setAttribute("android:paddingBottom", "22.0dip")
                             if (heightIsNotZero && widthIsNotZero) {
-                                node.setAttribute("android:layout_height", "48.0dip")
-                                node.setAttribute("android:layout_width", "48.0dip")
+                                node.setAttribute("android:layout_height", layoutHeightWidth)
+                                node.setAttribute("android:layout_width", layoutHeightWidth)
                             }
                         } else if (timBarItem.containsKey(id)) {
                             node.setAttribute("android:layout_marginBottom", marginBottom)
-                            node.setAttribute("android:paddingBottom", timBarItem.getValue(id))
+                            if (!widerButtonsSpace) {
+                                node.setAttribute("android:paddingBottom", timBarItem.getValue(id))
+                            }
                         }
                     }
                 }
+            }
+        }
+
+        if (ChangeTopButtons == true) {
+            // Apply the selected icon type to the top buttons.
+            arrayOf(
+                "xxxhdpi",
+                "xxhdpi",
+                "xhdpi",
+                "hdpi",
+                "mdpi"
+            ).forEach { dpi ->
+                context.copyResources(
+                    "youtube/overlaybuttons/$iconType",
+                    ResourceGroup(
+                        "drawable-$dpi",
+                        "yt_outline_gear_white_24.png",
+                        "yt_outline_chevron_down_white_24.png",
+                        "quantum_ic_closed_caption_off_grey600_24.png",
+                        "quantum_ic_closed_caption_off_white_24.png",
+                        "quantum_ic_closed_caption_white_24.png"
+                    )
+                )
             }
         }
 

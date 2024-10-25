@@ -5,32 +5,34 @@ import app.revanced.patcher.extensions.InstructionExtensions.addInstruction
 import app.revanced.patcher.extensions.InstructionExtensions.addInstructions
 import app.revanced.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.revanced.patcher.extensions.InstructionExtensions.getInstruction
+import app.revanced.patcher.extensions.InstructionExtensions.removeInstruction
 import app.revanced.patcher.patch.PatchException
 import app.revanced.patcher.util.smali.ExternalLabel
 import app.revanced.patches.shared.litho.LithoFilterPatch
+import app.revanced.patches.shared.settingmenu.SettingsMenuPatch
+import app.revanced.patches.shared.viewgroup.ViewGroupMarginLayoutParamsHookPatch
 import app.revanced.patches.youtube.general.components.fingerprints.AccountListFingerprint
 import app.revanced.patches.youtube.general.components.fingerprints.AccountListParentFingerprint
 import app.revanced.patches.youtube.general.components.fingerprints.AccountMenuFingerprint
+import app.revanced.patches.youtube.general.components.fingerprints.AccountMenuParentFingerprint
 import app.revanced.patches.youtube.general.components.fingerprints.AccountSwitcherAccessibilityLabelFingerprint
 import app.revanced.patches.youtube.general.components.fingerprints.AppBlockingCheckResultToStringFingerprint
 import app.revanced.patches.youtube.general.components.fingerprints.BottomUiContainerFingerprint
 import app.revanced.patches.youtube.general.components.fingerprints.FloatingMicrophoneFingerprint
 import app.revanced.patches.youtube.general.components.fingerprints.PiPNotificationFingerprint
-import app.revanced.patches.youtube.general.components.fingerprints.SettingsMenuFingerprint
+import app.revanced.patches.youtube.general.components.fingerprints.PreferenceScreenFingerprint
 import app.revanced.patches.youtube.general.components.fingerprints.TooltipContentFullscreenFingerprint
 import app.revanced.patches.youtube.general.components.fingerprints.TooltipContentViewFingerprint
 import app.revanced.patches.youtube.utils.compatibility.Constants.COMPATIBLE_PACKAGE
-import app.revanced.patches.youtube.utils.fingerprints.AccountMenuParentFingerprint
 import app.revanced.patches.youtube.utils.integrations.Constants.COMPONENTS_PATH
 import app.revanced.patches.youtube.utils.integrations.Constants.GENERAL_CLASS_DESCRIPTOR
+import app.revanced.patches.youtube.utils.integrations.Constants.GENERAL_PATH
 import app.revanced.patches.youtube.utils.resourceid.SharedResourceIdPatch
 import app.revanced.patches.youtube.utils.resourceid.SharedResourceIdPatch.AccountSwitcherAccessibility
 import app.revanced.patches.youtube.utils.settings.SettingsPatch
-import app.revanced.patches.youtube.utils.viewgroup.ViewGroupMarginLayoutParamsHookPatch
-import app.revanced.util.getTargetIndexOrThrow
-import app.revanced.util.getTargetIndexWithFieldReferenceTypeOrThrow
-import app.revanced.util.getTargetIndexWithMethodReferenceName
-import app.revanced.util.getWideLiteralInstructionIndex
+import app.revanced.util.getReference
+import app.revanced.util.indexOfFirstInstructionOrThrow
+import app.revanced.util.indexOfFirstWideLiteralInstructionValueOrThrow
 import app.revanced.util.patch.BaseBytecodePatch
 import app.revanced.util.resultOrThrow
 import com.android.tools.smali.dexlib2.Opcode
@@ -38,6 +40,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.util.MethodUtil
 
 @Suppress("unused")
@@ -46,6 +49,7 @@ object LayoutComponentsPatch : BaseBytecodePatch(
     description = "Adds options to hide general layout components.",
     dependencies = setOf(
         LithoFilterPatch::class,
+        SettingsMenuPatch::class,
         SettingsPatch::class,
         SharedResourceIdPatch::class,
         ViewGroupMarginLayoutParamsHookPatch::class
@@ -59,11 +63,13 @@ object LayoutComponentsPatch : BaseBytecodePatch(
         BottomUiContainerFingerprint,
         FloatingMicrophoneFingerprint,
         PiPNotificationFingerprint,
-        SettingsMenuFingerprint,
+        PreferenceScreenFingerprint,
         TooltipContentFullscreenFingerprint,
         TooltipContentViewFingerprint
     )
 ) {
+    private const val INTEGRATIONS_SETTINGS_MENU_DESCRIPTOR =
+        "$GENERAL_PATH/SettingsMenuPatch;"
     private const val CUSTOM_FILTER_CLASS_DESCRIPTOR =
         "$COMPONENTS_PATH/CustomFilter;"
     private const val LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR =
@@ -172,10 +178,13 @@ object LayoutComponentsPatch : BaseBytecodePatch(
 
         AccountSwitcherAccessibilityLabelFingerprint.resultOrThrow().let {
             it.mutableMethod.apply {
-                val constIndex = getWideLiteralInstructionIndex(AccountSwitcherAccessibility)
-                val insertIndex = getTargetIndexOrThrow(constIndex, Opcode.IF_EQZ)
-                val setVisibilityIndex =
-                    getTargetIndexWithMethodReferenceName(insertIndex, "setVisibility")
+                val constIndex =
+                    indexOfFirstWideLiteralInstructionValueOrThrow(AccountSwitcherAccessibility)
+                val insertIndex = indexOfFirstInstructionOrThrow(constIndex, Opcode.IF_EQZ)
+                val setVisibilityIndex = indexOfFirstInstructionOrThrow(insertIndex) {
+                    opcode == Opcode.INVOKE_VIRTUAL &&
+                            getReference<MethodReference>()?.name == "setVisibility"
+                }
                 val visibilityRegister =
                     getInstruction<FiveRegisterInstruction>(setVisibilityIndex).registerD
 
@@ -190,20 +199,25 @@ object LayoutComponentsPatch : BaseBytecodePatch(
 
         // endregion
 
-        // region patch for hide settings menu
+        // region patch for hide setting menus
 
-        SettingsMenuFingerprint.resultOrThrow().let {
-            it.mutableMethod.apply {
-                val insertIndex =
-                    getTargetIndexWithFieldReferenceTypeOrThrow("Landroid/support/v7/widget/RecyclerView;")
-                val insertRegister = getInstruction<TwoRegisterInstruction>(insertIndex).registerA
+        PreferenceScreenFingerprint.resultOrThrow().mutableMethod.apply {
+            val targetIndex =
+                PreferenceScreenFingerprint.indexOfPreferenceScreenInstruction(this)
+            val targetRegister = getInstruction<FiveRegisterInstruction>(targetIndex).registerC
+            val targetReference = getInstruction<ReferenceInstruction>(targetIndex).reference
 
-                addInstruction(
-                    insertIndex,
-                    "invoke-static {v$insertRegister}, " +
-                            "$GENERAL_CLASS_DESCRIPTOR->hideSettingsMenu(Landroid/support/v7/widget/RecyclerView;)V"
-                )
-            }
+            val insertIndex = implementation!!.instructions.lastIndex
+
+            addInstructions(
+                insertIndex + 1, """
+                    invoke-virtual {v$targetRegister}, $targetReference
+                    move-result-object v$targetRegister
+                    invoke-static {v$targetRegister}, $INTEGRATIONS_SETTINGS_MENU_DESCRIPTOR->hideSettingsMenu(Landroidx/preference/PreferenceScreen;)V
+                    return-void
+                    """
+            )
+            removeInstruction(insertIndex)
         }
 
         // endregion
@@ -228,8 +242,8 @@ object LayoutComponentsPatch : BaseBytecodePatch(
         // region patch for hide tooltip content
 
         TooltipContentFullscreenFingerprint.resultOrThrow().mutableMethod.apply {
-            val literalIndex = getWideLiteralInstructionIndex(45384061)
-            val targetIndex = getTargetIndexOrThrow(literalIndex, Opcode.MOVE_RESULT)
+            val literalIndex = indexOfFirstWideLiteralInstructionValueOrThrow(45384061)
+            val targetIndex = indexOfFirstInstructionOrThrow(literalIndex, Opcode.MOVE_RESULT)
             val targetRegister = getInstruction<OneRegisterInstruction>(targetIndex).registerA
 
             addInstruction(

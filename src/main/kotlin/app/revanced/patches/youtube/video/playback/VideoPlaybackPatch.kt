@@ -30,12 +30,12 @@ import app.revanced.patches.youtube.video.playback.fingerprints.PlaybackSpeedCha
 import app.revanced.patches.youtube.video.playback.fingerprints.PlaybackSpeedInitializeFingerprint
 import app.revanced.patches.youtube.video.playback.fingerprints.QualityChangedFromRecyclerViewFingerprint
 import app.revanced.patches.youtube.video.playback.fingerprints.QualitySetterFingerprint
+import app.revanced.patches.youtube.video.playback.fingerprints.VP9CapabilityFingerprint
 import app.revanced.patches.youtube.video.videoid.VideoIdPatch
 import app.revanced.util.getReference
-import app.revanced.util.getStringInstructionIndex
-import app.revanced.util.getTargetIndexOrThrow
 import app.revanced.util.getWalkerMethod
 import app.revanced.util.indexOfFirstInstructionOrThrow
+import app.revanced.util.indexOfFirstStringInstructionOrThrow
 import app.revanced.util.patch.BaseBytecodePatch
 import app.revanced.util.resultOrThrow
 import app.revanced.util.updatePatchStatus
@@ -72,7 +72,8 @@ object VideoPlaybackPatch : BaseBytecodePatch(
         QualityChangedFromRecyclerViewFingerprint,
         QualityMenuViewInflateFingerprint,
         QualitySetterFingerprint,
-        VideoEndFingerprint
+        VideoEndFingerprint,
+        VP9CapabilityFingerprint
     )
 ) {
     private const val PLAYBACK_SPEED_MENU_FILTER_CLASS_DESCRIPTOR =
@@ -81,6 +82,8 @@ object VideoPlaybackPatch : BaseBytecodePatch(
         "$COMPONENTS_PATH/VideoQualityMenuFilter;"
     private const val INTEGRATIONS_AV1_CODEC_CLASS_DESCRIPTOR =
         "$VIDEO_PATH/AV1CodecPatch;"
+    private const val INTEGRATIONS_VP9_CODEC_CLASS_DESCRIPTOR =
+        "$VIDEO_PATH/VP9CodecPatch;"
     private const val INTEGRATIONS_CUSTOM_PLAYBACK_SPEED_CLASS_DESCRIPTOR =
         "$VIDEO_PATH/CustomPlaybackSpeedPatch;"
     private const val INTEGRATIONS_HDR_VIDEO_CLASS_DESCRIPTOR =
@@ -108,7 +111,8 @@ object VideoPlaybackPatch : BaseBytecodePatch(
         // region patch for disable HDR video
 
         HDRCapabilityFingerprint.resultOrThrow().mutableMethod.apply {
-            val stringIndex = getStringInstructionIndex("av1_profile_main_10_hdr_10_plus_supported")
+            val stringIndex =
+                indexOfFirstStringInstructionOrThrow("av1_profile_main_10_hdr_10_plus_supported")
             val walkerIndex = indexOfFirstInstructionOrThrow(stringIndex) {
                 val reference = getReference<MethodReference>()
                 reference?.parameterTypes == listOf("I", "Landroid/view/Display;")
@@ -145,7 +149,8 @@ object VideoPlaybackPatch : BaseBytecodePatch(
             speedSelectionInsertMethod
         ).forEach {
             it.apply {
-                val speedSelectionValueInstructionIndex = getTargetIndexOrThrow(Opcode.IGET)
+                val speedSelectionValueInstructionIndex =
+                    indexOfFirstInstructionOrThrow(Opcode.IGET)
                 val speedSelectionValueRegister =
                     getInstruction<TwoRegisterInstruction>(speedSelectionValueInstructionIndex).registerA
 
@@ -176,6 +181,7 @@ object VideoPlaybackPatch : BaseBytecodePatch(
         }
 
         VideoInformationPatch.hookBackgroundPlay("$INTEGRATIONS_PLAYBACK_SPEED_CLASS_DESCRIPTOR->newVideoStarted(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;JZ)V")
+        VideoIdPatch.hookPlayerResponseVideoId("$INTEGRATIONS_PLAYBACK_SPEED_CLASS_DESCRIPTOR->fetchPlaylistData(Ljava/lang/String;Z)V")
 
         context.updatePatchStatus(PATCH_STATUS_CLASS_DESCRIPTOR, "RememberPlaybackSpeed")
 
@@ -222,7 +228,7 @@ object VideoPlaybackPatch : BaseBytecodePatch(
 
         QualityMenuViewInflateFingerprint.resultOrThrow().let {
             it.mutableMethod.apply {
-                val insertIndex = getTargetIndexOrThrow(Opcode.CHECK_CAST)
+                val insertIndex = indexOfFirstInstructionOrThrow(Opcode.CHECK_CAST)
                 val insertRegister = getInstruction<OneRegisterInstruction>(insertIndex).registerA
 
                 addInstruction(
@@ -235,7 +241,7 @@ object VideoPlaybackPatch : BaseBytecodePatch(
                 it.mutableClass.methods.find { method -> method.name == "onItemClick" }
 
             onItemClickMethod?.apply {
-                val insertIndex = getTargetIndexOrThrow(Opcode.IGET_OBJECT)
+                val insertIndex = indexOfFirstInstructionOrThrow(Opcode.IGET_OBJECT)
                 val insertRegister = getInstruction<TwoRegisterInstruction>(insertIndex).registerA
 
                 val jumpIndex = indexOfFirstInstructionOrThrow {
@@ -286,12 +292,12 @@ object VideoPlaybackPatch : BaseBytecodePatch(
 
         AV1CodecFingerprint.result?.let {
             it.mutableMethod.apply {
-                val insertIndex = getStringInstructionIndex("video/av01")
+                val insertIndex = indexOfFirstStringInstructionOrThrow("video/av01")
                 val insertRegister = getInstruction<OneRegisterInstruction>(insertIndex).registerA
 
                 addInstructions(
                     insertIndex + 1, """
-                        invoke-static {v$insertRegister}, $INTEGRATIONS_AV1_CODEC_CLASS_DESCRIPTOR->replaceCodec(Ljava/lang/String;)Ljava/lang/String;
+                        invoke-static/range {v$insertRegister .. v$insertRegister}, $INTEGRATIONS_AV1_CODEC_CLASS_DESCRIPTOR->replaceCodec(Ljava/lang/String;)Ljava/lang/String;
                         move-result-object v$insertRegister
                         """
                 )
@@ -321,6 +327,21 @@ object VideoPlaybackPatch : BaseBytecodePatch(
                     )
                 }
             }
+        }
+
+        // endregion
+
+        // region patch for disable VP9 codec
+
+        VP9CapabilityFingerprint.resultOrThrow().mutableMethod.apply {
+            addInstructionsWithLabels(
+                0, """
+                    invoke-static {}, $INTEGRATIONS_VP9_CODEC_CLASS_DESCRIPTOR->disableVP9Codec()Z
+                    move-result v0
+                    if-nez v0, :default
+                    return v0
+                    """, ExternalLabel("default", getInstruction(0))
+            )
         }
 
         // endregion

@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="gms_core_dialog_continue_text">Kontynuuj</string>
     <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"GmsCore nie ma uprawnień do działania w tle.
@@ -16,6 +16,8 @@ Kontynuuj i wyłącz optymalizację baterii."</string>
     <string name="gms_core_toast_not_installed_message">GmsCore nie jest zainstalowany. Zainstaluj go.</string>
     <string name="revanced_bypass_image_region_restrictions_summary">Zastępuje domenę, która jest blokowana w niektórych regionach, aby można było otrzymywać miniaturki playlist, awatary kanałów itp.</string>
     <string name="revanced_bypass_image_region_restrictions_title">Pomiń ograniczenia regionu dla obrazów</string>
+    <string name="revanced_change_share_sheet_summary">Zmienia wygląd panelu udostępniania z natywnego aplikacji na systemowy.</string>
+    <string name="revanced_change_share_sheet_title">Zmień wygląd panelu udostępniania</string>
     <string name="revanced_change_start_page_entry_chart">Listy przebojów</string>
     <string name="revanced_change_start_page_entry_explore">Odkrywaj</string>
     <string name="revanced_change_start_page_entry_home">Strona główna</string>
@@ -28,20 +30,26 @@ Kontynuuj i wyłącz optymalizację baterii."</string>
     <string name="revanced_custom_filter_summary">Włącza własny filtr do ukrywania komponentów układu aplikacji.</string>
     <string name="revanced_custom_filter_title">Włącz własny filtr</string>
     <string name="revanced_custom_filter_toast_invalid_syntax">Nieprawidłowy własny filtr: %s.</string>
-    <string name="revanced_custom_playback_speeds_invalid">Nieprawidłowe niestandardowe prędkości odtwarzania. Przywrócono domyślne wartości.</string>
-    <string name="revanced_custom_playback_speeds_parse_exception">Nieprawidłowe niestandardowe prędkości odtwarzania. Przywrócono domyślne wartości.</string>
+    <string name="revanced_custom_playback_speeds_invalid">Niestandardowe prędkości muszą być mniejsze niż %sx.</string>
+    <string name="revanced_custom_playback_speeds_parse_exception">Nieprawidłowe niestandardowe prędkości odtwarzania.</string>
     <string name="revanced_custom_playback_speeds_summary">Skonfiguruj dostępne prędkości odtwarzania.</string>
     <string name="revanced_custom_playback_speeds_title">Edytuj niestandardowe prędkości odtwarzania</string>
+    <string name="revanced_default_app_settings_summary">Aby otwierać linki YouTube Music w RVX Music, przejdź do opcji obsługiwanych linków w ustawieniach i włącz obsługiwane adresy internetowe dla RVX.</string>
+    <string name="revanced_default_app_settings_title">Otwórz systemowe ustawienia aplikacji</string>
     <string name="revanced_disable_auto_captions_summary">Wyłącza automatycznie włączane napisy w odtwarzaczu filmów.</string>
     <string name="revanced_disable_auto_captions_title">Wyłącz automatyczne napisy</string>
+    <string name="revanced_disable_cairo_splash_animation_summary">Wyłącza animację ładowania aplikacji związaną z motywem Cairo podczas otwierania aplikacji.</string>
+    <string name="revanced_disable_cairo_splash_animation_title">Wyłącz animację uruchamiania aplikacji</string>
     <string name="revanced_disable_dislike_redirection_summary">Wyłącza przenoszenie do następnego utworu po kliknięciu łapki w dół.</string>
     <string name="revanced_disable_dislike_redirection_title">Wyłącz pomijanie nielubianych piosenek</string>
+    <string name="revanced_disable_mini_player_gesture_summary">Wyłącza gest przesuwania, aby zmienić utwór w miniodtwarzaczu.</string>
+    <string name="revanced_disable_mini_player_gesture_title">Wyłącz gest w miniodtwarzaczu</string>
+    <string name="revanced_disable_player_gesture_summary">Wyłącza gest przesuwania, aby zmienić utwór w odtwarzaczu.</string>
+    <string name="revanced_disable_player_gesture_title">Wyłącz gest w odtwarzaczu</string>
     <string name="revanced_enable_black_navigation_bar_summary">Ustawia kolor paska nawigacji na czarny.</string>
     <string name="revanced_enable_black_navigation_bar_title">Włącz czarny pasek nawigacji</string>
     <string name="revanced_enable_black_player_background_summary">Zmienia tło odtwarzacza na czarne.</string>
     <string name="revanced_enable_black_player_background_title">Włącz czarne tło odtwarzacza</string>
-    <string name="revanced_enable_cairo_splash_animation_summary">Włącza animację ładowania aplikacji związaną z motywem Cairo podczas otwierania aplikacji.</string>
-    <string name="revanced_enable_cairo_splash_animation_title">Włącz animację uruchamiania aplikacji</string>
     <string name="revanced_enable_color_match_player_summary">Dopasowuje kolor miniodtwarzacza do otwarzacza pełnoekranowego.</string>
     <string name="revanced_enable_color_match_player_title">Włącz pasujące kolory odtwarzaczy</string>
     <string name="revanced_enable_compact_dialog_summary">"Włącza kompaktowe menu ustawień utworu na telefonie.
@@ -80,6 +88,7 @@ Informacje:
     <string name="revanced_enable_zen_mode_podcast_title">Włącz tryb zen w podcastach</string>
     <string name="revanced_enable_zen_mode_summary">Zmienia kolor tła odtwarzacza na jasnoszary, aby zmniejszyć zmęczenie oczu.</string>
     <string name="revanced_enable_zen_mode_title">Włącz tryb zen</string>
+    <string name="revanced_extended_reset_to_default_toast">Przywrócono domyślne wartości.</string>
     <string name="revanced_extended_restart_first_run">Uruchom ponownie, aby wczytać układ poprawnie</string>
     <string name="revanced_extended_restart_message">Odśwież i uruchom ponownie</string>
     <string name="revanced_extended_settings_export_as_file">Wyeksportuj ustawienia do pliku</string>
@@ -174,11 +183,13 @@ Pobierz %2$s ze strony."</string>
     <string name="revanced_hide_flyout_menu_stats_for_nerds_title">Ukryj menu od statystyk dla nerdów</string>
     <string name="revanced_hide_flyout_menu_subscribe_title">Ukryj menu od subskrybowania / odsubskrybowywania</string>
     <string name="revanced_hide_flyout_menu_view_song_credit_title">Ukryj menu do autorów utworu</string>
-    <string name="revanced_hide_fullscreen_ads_blocked_success">Zablokowano reklamy pełnoekranowe. (Typ okna: %s)</string>
-    <string name="revanced_hide_fullscreen_ads_closed_success">Zamknięto reklamy pełnoekranowe.</string>
     <string name="revanced_hide_fullscreen_ads_summary">Ukrywa reklamy pełnoekranowe</string>
     <string name="revanced_hide_fullscreen_ads_title">Ukryj reklamy pełnoekranowe</string>
     <string name="revanced_hide_fullscreen_ads_type_summary">"Jeśli opcja jest włączona, pełnoekranowe reklamy są zamykane poprzez przycisk zamknięcia.
+Jeśli opcja jest wyłączona, pełnoekranowe reklamy są blokowane (mogą wystąpić efekty uboczne)"</string>
+    <string name="revanced_hide_fullscreen_ads_type_summary_off">"Jeśli opcja jest włączona, pełnoekranowe reklamy są zamykane poprzez przycisk zamknięcia.
+Jeśli opcja jest wyłączona, pełnoekranowe reklamy są blokowane (mogą wystąpić efekty uboczne)"</string>
+    <string name="revanced_hide_fullscreen_ads_type_summary_on">"Jeśli opcja jest włączona, pełnoekranowe reklamy są zamykane poprzez przycisk zamknięcia.
 Jeśli opcja jest wyłączona, pełnoekranowe reklamy są blokowane (mogą wystąpić efekty uboczne)"</string>
     <string name="revanced_hide_fullscreen_ads_type_title">Zamknij pełnoekranowe reklamy</string>
     <string name="revanced_hide_fullscreen_share_button_summary">Ukrywa przycisk udostępniania w trybie pełnoekranowym.</string>
@@ -215,8 +226,23 @@ Jeśli opcja jest wyłączona, pełnoekranowe reklamy są blokowane (mogą wyst�
     <string name="revanced_hide_premium_promotion_title">Ukryj wyskakujące okienka promocyjne Premium</string>
     <string name="revanced_hide_premium_renewal_summary">Ukrywa baner odnawiania Premium.</string>
     <string name="revanced_hide_premium_renewal_title">Ukryj baner odnawiania Premium</string>
+    <string name="revanced_hide_promotion_alert_banner_summary">Ukrywa banery z alertami promocyjnymi.</string>
+    <string name="revanced_hide_promotion_alert_banner_title">Ukryj banery z alertami promocyjnymi</string>
     <string name="revanced_hide_samples_shelf_summary">Ukrywa półke z samplami na stronie głównej.</string>
     <string name="revanced_hide_samples_shelf_title">Ukryj półkę z samplami</string>
+    <string name="revanced_hide_settings_menu_about_title">Ukryj menu informacji o YouTube Music</string>
+    <string name="revanced_hide_settings_menu_data_saving_title">Ukryj menu oszczędzania danych</string>
+    <string name="revanced_hide_settings_menu_downloads_and_storage_title">Ukryj menu pobranych i miejsca na dane</string>
+    <string name="revanced_hide_settings_menu_general_title">Ukryj menu ustawień ogólnych</string>
+    <string name="revanced_hide_settings_menu_notification_title">Ukryj menu powiadomień</string>
+    <string name="revanced_hide_settings_menu_paid_memberships_title">Ukryj menu zasubskrybowania Music Premium</string>
+    <string name="revanced_hide_settings_menu_parent_tools_title">Ukryj menu centrum rodziny</string>
+    <string name="revanced_hide_settings_menu_playback_title">Ukryj menu odtwarzania</string>
+    <string name="revanced_hide_settings_menu_privacy_and_location_title">Ukryj menu prywatności i danych</string>
+    <string name="revanced_hide_settings_menu_recommendations_title">Ukryj menu rekomendacji</string>
+    <string name="revanced_hide_settings_menu_summary">"Ukrywa elementy menu ustawień.
+Działa nie tylko na elementy menu ustawień YT Music, lecz także ReVanced Extended."</string>
+    <string name="revanced_hide_settings_menu_title">Ukryj menu ustawień</string>
     <string name="revanced_hide_sound_search_button_summary">Ukrywa przycisk od rozpoznawania piosenek w pasku wyszukiwania.</string>
     <string name="revanced_hide_sound_search_button_title">Ukryj przycisk od rozpoznawania piosenek</string>
     <string name="revanced_hide_tap_to_update_button_summary">Ukrywa przycisk \'Stuknij, aby zaktualizować\'.</string>
@@ -233,18 +259,24 @@ Jeśli opcja jest wyłączona, pełnoekranowe reklamy są blokowane (mogą wyst�
     <string name="revanced_preference_screen_misc_title">Pozostałe</string>
     <string name="revanced_preference_screen_navigation_title">Pasek nawigacji</string>
     <string name="revanced_preference_screen_player_title">Odtwarzacz</string>
+    <string name="revanced_preference_screen_return_youtube_username_title">Return YouTube Username</string>
     <string name="revanced_preference_screen_ryd_title">Return YouTube Dislike</string>
     <string name="revanced_preference_screen_sb_title">SponsorBlock</string>
-    <string name="revanced_preference_screen_video_title">Filmy</string>
+    <string name="revanced_preference_screen_settings_title">Menu ustawień YouTube Music</string>
+    <string name="revanced_preference_screen_video_title">Teledyski</string>
     <string name="revanced_remember_playback_speed_last_selected_summary">Zapisuje ostatnią wybraną prędkość odtwarzania.</string>
     <string name="revanced_remember_playback_speed_last_selected_title">Zapamiętuj zmiany prędkości odtwarzania</string>
+    <string name="revanced_remember_playback_speed_last_selected_toast_summary">Komunikaty będą wyświetlane po zmianie domyślnej prędkości odtwarzania.</string>
+    <string name="revanced_remember_playback_speed_last_selected_toast_title">Komunikaty o zmianie domyślnej prędkości odtwarzania</string>
     <string name="revanced_remember_playback_speed_toast">Zmieniono domyślną prędkość odtwarzania na %s.</string>
     <string name="revanced_remember_repeat_state_summary">Zapisuje stan pętli.</string>
     <string name="revanced_remember_repeat_state_title">Zapamiętaj stan pętli</string>
     <string name="revanced_remember_shuffle_state_summary">Zapisuje stan odtwarzania losowego.</string>
     <string name="revanced_remember_shuffle_state_title">Zapamiętaj stan odtwarzania losowego</string>
-    <string name="revanced_remember_video_quality_last_selected_summary">Zapisuje ostatnią wybraną jakość filmu.</string>
-    <string name="revanced_remember_video_quality_last_selected_title">Zapamiętuj zmiany jakości filmu</string>
+    <string name="revanced_remember_video_quality_last_selected_summary">Zapisuje ostatnią wybraną jakość teledysku.</string>
+    <string name="revanced_remember_video_quality_last_selected_title">Zapamiętuj zmiany jakości teledysku</string>
+    <string name="revanced_remember_video_quality_last_selected_toast_summary">Komunikaty będą wyświetlane po zmianie domyślnej jakości teledysków.</string>
+    <string name="revanced_remember_video_quality_last_selected_toast_title">Komunikaty o zmianie domyślnej jakości teledysków</string>
     <string name="revanced_remember_video_quality_mobile">Zmieniono domyślną jakość podczas używania sieci mobilnej na %s.</string>
     <string name="revanced_remember_video_quality_none">Jakość nie została ustawiona.</string>
     <string name="revanced_remember_video_quality_wifi">Zmieniono domyślną jakość podczas używania Wi-Fi na %s.</string>
@@ -270,6 +302,23 @@ Niektóre ustawienia mogą nie działać poprawnie ze starym układem odtwarzacz
     <string name="revanced_restore_old_player_layout_title">Przywróć stary układ odtwarzacza</string>
     <string name="revanced_restore_old_style_library_shelf_summary">Przywraca zakładkę biblioteki do starego stylu. (Eksperymentalne)</string>
     <string name="revanced_restore_old_style_library_shelf_title">Włącz stary styl półek biblioteki</string>
+    <string name="revanced_return_youtube_username_display_format_handle_username">\@nick (Nazwa użytkownika)</string>
+    <string name="revanced_return_youtube_username_display_format_summary">Wybierz format wyświetlania nazwy użytkownika.</string>
+    <string name="revanced_return_youtube_username_display_format_title">Format wyświetlania</string>
+    <string name="revanced_return_youtube_username_display_format_username_handle">Nazwa użytkownika (@nick)</string>
+    <string name="revanced_return_youtube_username_display_format_username_only">Nazwa użytkownika</string>
+    <string name="revanced_return_youtube_username_enabled_summary">Zastępuje nicki nazwami użytkowników w komentarzach.</string>
+    <string name="revanced_return_youtube_username_enabled_title">Włącz Return YouTube Username</string>
+    <string name="revanced_return_youtube_username_youtube_data_api_v3_about_summary">"Klucz deweloperski YouTube Data API v3 jest wymagany do zastępowania nicków nazwami użytkownika.
+
+Dzienny limit kluczy API w planie darmowym wynosi 10 000, a 1 limit służy do zastąpienia nicku nazwą użytkownika dla 1 komentarza.
+
+Kliknij, by zobaczyć, jak zgłosić klucz API."</string>
+    <string name="revanced_return_youtube_username_youtube_data_api_v3_about_title">O kluczu YouTube Data API</string>
+    <string name="revanced_return_youtube_username_youtube_data_api_v3_developer_key_summary">Klucz deweloperski używany do korzystania z API YouTube Data V3.</string>
+    <string name="revanced_return_youtube_username_youtube_data_api_v3_developer_key_title">Klucz YouTube Data API</string>
+    <string name="revanced_return_youtube_username_youtube_data_api_v3_dialog_message">1. Przejdź do &lt;a href=%1$s&gt;Utwórz nowy projekt&lt;/a&gt;.&lt;br&gt;2. Kliknij przycisk &lt;b&gt;UTWÓRZ&lt;/b&gt;&lt;br&gt;3. Przejdź do &lt;a href=%2$s&gt;YouTube Data API v3&lt;/a&gt;.&lt;br&gt;4. Kliknij przycisk &lt;b&gt;WŁĄCZ&lt;/b&gt;&lt;br&gt;5. Kliknij przycisk &lt;b&gt;UTWÓRZ DANE LOGOWANIA&lt;/b&gt;&lt;br&gt;6. Wybierz opcję &lt;b&gt;Dane publiczne&lt;/b&gt;&lt;br&gt;7. Kliknij przycisk &lt;b&gt;DALEJ&lt;/b&gt;&lt;br&gt;8. Skopiuj klucz API&lt;br&gt;&lt;br&gt;※ Klucz API nie powinien być współdzielony z innymi, dlatego nie jest zawarty w ustawieniach importu/eksportu</string>
+    <string name="revanced_return_youtube_username_youtube_data_api_v3_dialog_title">Zgłoś klucz deweloperski YouTube Data API</string>
     <string name="revanced_ryd_about">O integracji</string>
     <string name="revanced_ryd_attribution_summary">Dane są dostarczane dzięki API Return YouTube Dislike. Kliknij tutaj, aby dowiedzieć się więcej.</string>
     <string name="revanced_ryd_attribution_title">ReturnYouTubeDislike.com</string>
@@ -279,6 +328,8 @@ Niektóre ustawienia mogą nie działać poprawnie ze starym układem odtwarzacz
     <string name="revanced_ryd_dislike_percentage_title">Łapki w dół wyświetlane jako procent</string>
     <string name="revanced_ryd_enabled_summary">Pokazuje ilość łapek w dół filmów.</string>
     <string name="revanced_ryd_enabled_title">Włącz Return YouTube Dislike</string>
+    <string name="revanced_ryd_estimated_like_summary">Pokazuje szacowaną ilość polubień filmów.</string>
+    <string name="revanced_ryd_estimated_like_title">Pokaż szacowaną ilość polubień</string>
     <string name="revanced_ryd_failure_client_rate_limit_requested">Łapki w dół nie są dostępne (limit API użytkownika został osiągnięty).</string>
     <string name="revanced_ryd_failure_connection_status_code">Liczba łapek w dół nie jest dostępna (status %d).</string>
     <string name="revanced_ryd_failure_connection_timeout">Łapki w dół są tymczasowo niedostępne (API nie reaguje).</string>
@@ -298,7 +349,7 @@ Niektóre ustawienia mogą nie działać poprawnie ze starym układem odtwarzacz
     <string name="revanced_sb_api_url_sum">Adres SponsorBlock jest używany do wykonywania połączeń z serwerem. Nie zmieniaj tego, chyba że wiesz, co robisz.</string>
     <string name="revanced_sb_color_changed">Kolor został zmieniony.</string>
     <string name="revanced_sb_color_dot_label">Kolor:</string>
-    <string name="revanced_sb_color_invalid">Nieprawidłowy kod koloru. Przywrócono domyślny kolor.</string>
+    <string name="revanced_sb_color_invalid">Nieprawidłowy kod koloru.</string>
     <string name="revanced_sb_color_reset">Kolor został zresetowany.</string>
     <string name="revanced_sb_diff_segments">Zmień sposoby pomijania segmentów</string>
     <string name="revanced_sb_enabled">Włącz SponsorBlock</string>
@@ -347,8 +398,9 @@ Niektóre ustawienia mogą nie działać poprawnie ze starym układem odtwarzacz
 
 • Zmieni to wygląd aplikacji, lecz mogą pojawić się nieznane efekty uboczne.
 • Jeśli potem opcja zostanie wyłączona, stary interfejs użytkownika może pozostać do momentu wyczyszczenia danych aplikacji."</string>
-    <string name="revanced_spoof_app_version_target_entry_4_27_53">4.27.53 - Wyłącz tryb radia w rejonach kanadyjskich</string>
-    <string name="revanced_spoof_app_version_target_entry_6_11_52">6.11.52 - Wyłącz teksty w czasie rzeczywistym</string>
+    <string name="revanced_spoof_app_version_target_entry_4_27_53">4.27.53 - Wyłącza tryb radia w rejonach kanadyjskich</string>
+    <string name="revanced_spoof_app_version_target_entry_6_11_52">6.11.52 - Wyłącza teksty w czasie rzeczywistym</string>
+    <string name="revanced_spoof_app_version_target_entry_7_16_53">7.16.53 - Przywraca stary pasek akcji</string>
     <string name="revanced_spoof_app_version_target_summary">Wybierz wersję, którą chcesz oszukiwać.</string>
     <string name="revanced_spoof_app_version_target_title">Docelowa wersja aplikacji</string>
     <string name="revanced_spoof_app_version_title">Oszukaj wersję aplikacji</string>

@@ -8,9 +8,10 @@ import app.revanced.patcher.patch.BytecodePatch
 import app.revanced.patcher.patch.PatchException
 import app.revanced.patcher.patch.annotation.Patch
 import app.revanced.patcher.util.proxy.mutableTypes.MutableMethod
-import app.revanced.patches.youtube.utils.fingerprints.InitializeButtonsFingerprint
 import app.revanced.patches.youtube.utils.integrations.Constants.SHARED_PATH
 import app.revanced.patches.youtube.utils.mainactivity.MainActivityResolvePatch
+import app.revanced.patches.youtube.utils.navigation.fingerprints.InitializeBottomBarContainerFingerprint
+import app.revanced.patches.youtube.utils.navigation.fingerprints.InitializeButtonsFingerprint
 import app.revanced.patches.youtube.utils.navigation.fingerprints.NavigationEnumFingerprint
 import app.revanced.patches.youtube.utils.navigation.fingerprints.PivotBarButtonsCreateDrawableViewFingerprint
 import app.revanced.patches.youtube.utils.navigation.fingerprints.PivotBarButtonsCreateResourceViewFingerprint
@@ -18,6 +19,7 @@ import app.revanced.patches.youtube.utils.navigation.fingerprints.PivotBarButton
 import app.revanced.patches.youtube.utils.navigation.fingerprints.PivotBarConstructorFingerprint
 import app.revanced.patches.youtube.utils.playertype.PlayerTypeHookPatch
 import app.revanced.patches.youtube.utils.resourceid.SharedResourceIdPatch
+import app.revanced.util.findMethodOrThrow
 import app.revanced.util.getReference
 import app.revanced.util.resultOrThrow
 import com.android.tools.smali.dexlib2.Opcode
@@ -38,11 +40,12 @@ import com.android.tools.smali.dexlib2.util.MethodUtil
 @Suppress("unused")
 object NavigationBarHookPatch : BytecodePatch(
     setOf(
+        InitializeBottomBarContainerFingerprint,
         NavigationEnumFingerprint,
         PivotBarButtonsCreateDrawableViewFingerprint,
         PivotBarButtonsCreateResourceViewFingerprint,
         PivotBarButtonsViewSetSelectedFingerprint,
-        PivotBarConstructorFingerprint
+        PivotBarConstructorFingerprint,
     ),
 ) {
     private const val INTEGRATIONS_CLASS_DESCRIPTOR =
@@ -51,6 +54,9 @@ object NavigationBarHookPatch : BytecodePatch(
         "$SHARED_PATH/NavigationBar\$NavigationButton;"
 
     private lateinit var navigationTabCreatedCallback: MutableMethod
+
+    private lateinit var bottomBarContainerMethod: MutableMethod
+    private var bottomBarContainerOffset = 0
 
     override fun execute(context: BytecodeContext) {
         fun MutableMethod.addHook(hook: Hook, insertPredicate: Instruction.() -> Boolean) {
@@ -115,14 +121,17 @@ object NavigationBarHookPatch : BytecodePatch(
         }
 
         navigationTabCreatedCallback =
-            context.findClass(INTEGRATIONS_CLASS_DESCRIPTOR)?.mutableClass?.methods?.first { method ->
-                method.name == "navigationTabCreatedCallback"
-            } ?: throw PatchException("Could not find navigationTabCreatedCallback method")
+            context.findMethodOrThrow(INTEGRATIONS_CLASS_DESCRIPTOR) {
+                name == "navigationTabCreatedCallback"
+            }
 
         MainActivityResolvePatch.injectOnBackPressedMethodCall(
             INTEGRATIONS_CLASS_DESCRIPTOR,
             "onBackPressed"
         )
+
+        bottomBarContainerMethod =
+            InitializeBottomBarContainerFingerprint.resultOrThrow().mutableMethod
     }
 
     val hookNavigationButtonCreated: (String) -> Unit by lazy {
@@ -133,6 +142,20 @@ object NavigationBarHookPatch : BytecodePatch(
                 "invoke-static { p0, p1 }, " +
                         "$integrationsClassDescriptor->navigationTabCreated" +
                         "(${INTEGRATIONS_NAVIGATION_BUTTON_DESCRIPTOR}Landroid/view/View;)V",
+            )
+        }
+    }
+
+    fun addBottomBarContainerHook(descriptor: String) {
+        bottomBarContainerMethod.apply {
+            val layoutChangeListenerIndex =
+                InitializeBottomBarContainerFingerprint.indexOfLayoutChangeListenerInstruction(this)
+            val bottomBarContainerRegister =
+                getInstruction<FiveRegisterInstruction>(layoutChangeListenerIndex).registerC
+
+            addInstruction(
+                layoutChangeListenerIndex + bottomBarContainerOffset--,
+                "invoke-static { v$bottomBarContainerRegister }, $descriptor"
             )
         }
     }
